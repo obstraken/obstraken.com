@@ -20,17 +20,17 @@
   .brand{display:flex;align-items:center;gap:12px;font-family:'Geist';font-weight:800;letter-spacing:.04em}
   .brand img{width:38px;height:38px;border-radius:9px}
   .back{color:var(--muted);font-size:14px}
-  .back:hover{color:var(--ink)}
+  .back:hover,a:hover{color:var(--ink)}
   main{padding:76px 0 90px}
   .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan);font-weight:700}
   h1{font-family:'Geist';font-size:46px;line-height:1.05;letter-spacing:0;margin-top:18px}
   .card{margin-top:34px;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:32px}
-  h2{font-family:'Geist';font-size:22px;margin-top:28px}
+  h2{font-family:'Geist';font-size:22px;margin-top:30px}
   h2:first-child{margin-top:0}
   p{margin-top:12px;color:var(--muted);line-height:1.7}
-  ul{margin:12px 0 0 18px;color:var(--muted);line-height:1.7}
   footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
-  @media(max-width:620px){.wrap{padding:0 18px}h1{font-size:34px}.card{padding:24px}}
+  .legal{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+  @media(max-width:620px){.wrap{padding:0 18px}.row{align-items:flex-start;flex-direction:column;padding:16px 0}h1{font-size:34px}.card{padding:24px}.eyebrow{letter-spacing:.18em}}
 </style>
 </head>
 <body>
@@ -44,25 +44,54 @@
   <div class="eyebrow">Confidentialité</div>
   <h1>Politique de confidentialité</h1>
   <div class="card">
-    <h2>Données collectées</h2>
-    <p>Le site Obstraken ne stocke pas directement les informations saisies dans le formulaire. Lors de l'envoi, votre logiciel de messagerie est ouvert afin de préparer un email à destination d'Obstraken.</p>
-    <p>Les données concernées peuvent inclure votre nom, votre adresse email, votre société, votre téléphone et le contenu de votre message.</p>
+    <h2>Politique de confidentialité</h2>
+    <p>OBSTRAKEN accorde une importance particulière à la protection des données personnelles des utilisateurs de son site internet. La présente politique de confidentialité a pour objet de vous informer, conformément au Règlement (UE) 2016/679 (« RGPD ») et à la loi n° 78-17 du 6 janvier 1978 modifiée dite « Informatique et Libertés », des conditions dans lesquelles vos données personnelles sont collectées et traitées.</p>
 
-    <h2>Finalité</h2>
-    <p>Ces informations sont utilisées uniquement pour répondre à votre demande, qualifier votre besoin et organiser un éventuel échange commercial ou technique.</p>
+    <h2>Responsable du traitement</h2>
+    <p>OBSTRAKEN — Société à Responsabilité Limitée (S.A.R.L)</p>
+    <p>Siège social : 2 Place Marcel Aymé, 75018 Paris, France</p>
+    <p>RCS Paris : 512 562 828</p>
+    <p>Représentée par : Mikael Cleuziou, Gérant</p>
+    <p>Contact : <a href="index.html#contact">utilisez le formulaire de contact</a></p>
+
+    <h2>Données collectées</h2>
+    <p>Via le formulaire de contact : nom, prénom, email, société, téléphone (facultatif) et contenu du message.</p>
+    <p>Via la navigation : données statistiques agrégées (pages consultées, durée de visite, type de terminal) collectées via des cookies de mesure d'audience, sous réserve de votre consentement.</p>
+
+    <h2>Finalités</h2>
+    <p>Répondre à vos demandes, établir un échange professionnel, mesurer l'audience du site et améliorer l'expérience utilisateur.</p>
+
+    <h2>Base légale</h2>
+    <p>Exécution de mesures précontractuelles (art. 6.1.b RGPD), intérêt légitime (art. 6.1.f RGPD) et consentement pour les cookies non essentiels (art. 6.1.a RGPD).</p>
 
     <h2>Durée de conservation</h2>
-    <p>Les échanges reçus par email sont conservés pendant la durée nécessaire au traitement de la demande, puis archivés ou supprimés selon les obligations applicables.</p>
+    <p>Données issues du formulaire de contact : 3 ans à compter du dernier échange avec la personne concernée, conformément aux recommandations de la CNIL en matière de prospection commerciale B2B.</p>
+    <p>Cookies de mesure d'audience : durée de vie maximale de 13 mois sur le terminal de l'utilisateur, conformément aux recommandations de la CNIL.</p>
+    <p>Données statistiques agrégées : conservées pendant la durée d'exploitation du site sous forme non identifiante.</p>
+
+    <h2>Destinataires</h2>
+    <p>OBSTRAKEN et son hébergeur Squarespace Ireland Limited. Aucune cession à des tiers commerciaux.</p>
+
+    <h2>Transferts hors Union Européenne</h2>
+    <p>Certaines données peuvent faire l'objet de transferts vers des pays situés hors de l'Union Européenne, notamment dans le cadre des services techniques fournis par notre hébergeur Squarespace. Ces transferts sont encadrés par les Clauses Contractuelles Types adoptées par la Commission européenne, conformément aux articles 44 et suivants du RGPD.</p>
+
+    <h2>Sécurité</h2>
+    <p>OBSTRAKEN met en œuvre les mesures techniques et organisationnelles appropriées pour garantir la sécurité de vos données personnelles, notamment le chiffrement des communications (protocole HTTPS) et la sélection de prestataires conformes au RGPD.</p>
 
     <h2>Vos droits</h2>
-    <p>Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à <a href="mailto:mcleuziou@obstraken.com">mcleuziou@obstraken.com</a>.</p>
+    <p>Conformément aux articles 15 à 22 du RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition. Vous pouvez les exercer via le formulaire de contact. OBSTRAKEN s'engage à répondre à toute demande dans un délai d'un (1) mois à compter de sa réception, conformément à l'article 12 du RGPD. En cas de désaccord, vous pouvez saisir la CNIL (<a href="https://www.cnil.fr/">www.cnil.fr</a>).</p>
 
     <h2>Cookies</h2>
-    <p>Le site ne met pas en place de cookies de suivi publicitaire dans cette version statique.</p>
+    <p>Le site utilise des cookies strictement nécessaires à son fonctionnement et, sous réserve de votre consentement, des cookies de mesure d'audience. Vous pouvez gérer vos préférences à tout moment via le bandeau dédié.</p>
+
+    <p>Dernière mise à jour : Mai 2026</p>
   </div>
 </main>
 <footer>
-  <div class="wrap">© 2026 OBSTRAKEN</div>
+  <div class="wrap">
+    <div>© 2026 <strong>OBSTRAKEN</strong> — L'Usine de Données Souveraine as-a-Service</div>
+    <div class="legal"><a href="politique-confidentialite.html">Politique de confidentialité</a><a href="mentions-legales.html">Mentions légales</a></div>
+  </div>
 </footer>
 </body>
 </html>

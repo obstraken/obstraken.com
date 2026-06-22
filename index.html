@@ -15,30 +15,30 @@
     --ink:#eaf0ff; --muted:#9eb0d8; --line:rgba(255,255,255,.12);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:108px}
   html,body{max-width:100%;overflow-x:hidden}
-  body{font-family:'Geist',-apple-system,sans-serif;background:var(--navy);color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:70px}
+  body{font-family:'Geist',-apple-system,sans-serif;background:var(--navy);color:var(--ink);-webkit-font-smoothing:antialiased;padding-top:68px}
   a{color:inherit;text-decoration:none}
   .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
   .grad-t{color:var(--cyan)}
   .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan);font-weight:600;line-height:1.6;overflow-wrap:anywhere}
   section{position:relative}
-  section[id], header[id]{scroll-margin-top:92px}
+  section[id], header[id]{scroll-margin-top:108px}
   h2{font-family:'Geist';font-weight:800;font-size:40px;line-height:1.1;letter-spacing:0}
   /* NAV */
-  nav.top{position:sticky;top:0;z-index:500;backdrop-filter:blur(14px);background:rgba(11,21,48,.88);border-bottom:1px solid var(--line)}
+  nav.top{position:fixed;top:0;left:0;right:0;width:100%;z-index:500;backdrop-filter:blur(14px);background:rgba(11,21,48,.9);border-bottom:1px solid var(--line);box-shadow:0 14px 34px rgba(0,0,0,.18)}
   nav.top .row{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:18px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:38px;height:38px;border-radius:9px}
   .brand b{font-family:'Geist';font-weight:800;letter-spacing:.04em;font-size:17px}
-  .navlinks{display:none;gap:30px;font-size:14px;color:var(--muted)}
+  .navlinks{display:none;gap:18px;font-size:13px;color:var(--muted);align-items:center;white-space:nowrap}
   .navlinks a:hover{color:var(--ink)}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:14px;transition:.2s;border:1px solid transparent;cursor:pointer}
   .btn-primary{background:var(--cyan);color:#06122b;box-shadow:0 10px 24px rgba(79,214,230,.18)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,214,230,.24)}
   .btn-ghost{border-color:var(--line);color:var(--ink)}
   .btn-ghost:hover{border-color:rgba(255,255,255,.4)}
-  @media(min-width:900px){.navlinks{display:flex}}
+  @media(min-width:1040px){.navlinks{display:flex}}
   /* HERO */
   .hero{position:relative;padding:88px 0 68px;overflow:hidden;border-bottom:1px solid var(--line)}
   #net{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.44}
@@ -47,21 +47,25 @@
   .hero p.lead{margin-top:24px;font-size:19px;line-height:1.6;color:var(--muted);max-width:620px;overflow-wrap:anywhere}
   .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
   .stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px}
-  .stat{border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--card)}
-  .stat b{font-family:'Geist';font-size:30px;font-weight:800;display:block}
-  .stat span{font-size:13px;color:var(--muted)}
+  .stat{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));min-height:156px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 44px rgba(0,0,0,.2)}
+  .stat::after{content:"";position:absolute;inset:auto -22px -46px auto;width:108px;height:108px;border-radius:999px;background:rgba(79,214,230,.12);filter:blur(2px)}
+  .stat-ic{width:38px;height:38px;border-radius:12px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);display:grid;place-items:center;font-size:19px;margin-bottom:8px}
+  .stat b{font-family:'Geist';font-size:38px;font-weight:800;display:block;line-height:1}
+  .stat span{font-size:14px;color:var(--muted);line-height:1.45;max-width:220px}
   @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
   /* ENJEUX */
   .pad{padding:80px 0}
   .head{max-width:680px;margin-bottom:46px}
   .head p{margin-top:16px;color:var(--muted);font-size:17px;line-height:1.6}
   .enjeux{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-  .enjeu{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--card);transition:.22s}
+  .enjeu{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--card);transition:.22s;display:flex;flex-direction:column}
   .enjeu:hover{border-color:rgba(177,143,214,.45);transform:translateY(-4px)}
-  .enjeu .tag{display:inline-flex;margin-bottom:14px;padding:5px 9px;border-radius:999px;background:rgba(79,214,230,.09);color:var(--cyan);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  .enjeu .tag{display:inline-flex;align-items:center;gap:7px;width:max-content;margin-bottom:14px;padding:6px 10px;border-radius:999px;background:rgba(255,104,104,.09);color:#ffb5b5;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  .enjeu .tag .emoji{font-size:15px;letter-spacing:0}
   .enjeu h4{font-family:'Geist';font-size:17px;font-weight:700;margin-bottom:8px}
   .enjeu p{font-size:14px;color:var(--muted);line-height:1.55}
-  .enjeu .lever{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink)}
+  .enjeu .lever{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);color:var(--ink);display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:flex-start}
+  .enjeu .lever-ic{width:34px;height:34px;border-radius:10px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);display:grid;place-items:center;font-size:17px}
   .enjeu .lever b{color:var(--cyan);font-family:'Geist';font-size:13px}
   /* STEPS */
   .steps-band{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -75,9 +79,13 @@
   .step .when{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink);font-weight:600}
   .step .big{position:absolute;right:18px;top:6px;font-family:'Geist';font-size:90px;font-weight:800;color:rgba(255,255,255,.04)}
   @media(max-width:820px){.steps{grid-template-columns:1fr}}
-  .reass{display:flex;gap:24px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:14px}
-  .reass div{display:flex;gap:10px;align-items:flex-start;max-width:340px}
-  .reass .ok{color:var(--cyan);font-weight:700}
+  .reass{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:34px;color:var(--muted);font-size:14px}
+  .reass .proof{position:relative;overflow:hidden;border:1px solid rgba(79,214,230,.2);border-radius:18px;padding:22px;background:linear-gradient(150deg,rgba(79,214,230,.09),rgba(255,255,255,.035));min-height:190px}
+  .reass .proof::after{content:"";position:absolute;right:-46px;bottom:-46px;width:120px;height:120px;border-radius:999px;background:rgba(177,143,214,.12)}
+  .reass .ok{width:36px;height:36px;border-radius:11px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.26);display:grid;place-items:center;color:var(--cyan);font-weight:800;margin-bottom:18px}
+  .reass h4{font-family:'Geist';font-size:17px;color:var(--ink);line-height:1.25;margin-bottom:10px}
+  .reass p{font-size:14px;line-height:1.58;color:var(--muted)}
+  @media(max-width:820px){.reass{grid-template-columns:1fr}.reass .proof{min-height:auto}}
   /* SERVICES */
   .svcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-top:40px}
   .svc{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--card);transition:.22s;position:relative;overflow:hidden}
@@ -94,15 +102,17 @@
   .why .it p{font-size:13.5px;color:var(--muted);line-height:1.5}
   /* CLIENTS */
   .clients{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-  .client{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--card)}
-  .client .nm{font-family:'Geist';font-size:24px;font-weight:800;letter-spacing:.03em}
+  .client{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--card);display:flex;flex-direction:column;gap:16px;min-height:245px}
+  .client-logo{height:112px;border-radius:14px;background:#f7fbff;border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;padding:18px}
+  .client-logo img{max-width:92%;max-height:82px;object-fit:contain}
   .client .tag{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin:8px 0 14px}
   .client p{font-size:14px;color:var(--muted);line-height:1.55}
   @media(max-width:760px){.clients{grid-template-columns:1fr}}
   .quote{margin-top:34px;border:1px solid var(--line);border-radius:20px;padding:38px;background:var(--card)}
   .quote p{font-size:19px;line-height:1.6;font-weight:300}
   .quote p+p{margin-top:14px}
-  .quote .who{margin-top:22px;font-size:14px;color:var(--muted)}
+  .quote .who{margin-top:24px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:14px}
+  .quote .avatar{width:54px;height:54px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.22)}
   .quote .who b{color:var(--ink);font-family:'Geist'}
   /* PARTNER */
   .partner{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;border:1px solid var(--line);border-radius:24px;padding:42px;background:var(--card);margin-top:10px}
@@ -111,10 +121,9 @@
   .partner .offers{margin-top:20px;display:flex;flex-direction:column;gap:10px}
   .partner .offers div{font-size:14px;color:var(--ink)}
   .partner .offers b{color:var(--cyan);font-family:'Geist'}
-  .logos{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-  .logobox{flex:1;min-width:120px;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#f7fbff;text-align:center}
-  .logobox img{max-width:140px;width:100%;height:38px;object-fit:contain}
-  .logobox span{font-size:11px;color:#273456;letter-spacing:.05em;font-weight:700}
+  .logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+  .logobox{border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:22px;display:flex;align-items:center;justify-content:center;background:#f7fbff;text-align:center;min-height:112px}
+  .logobox img{max-width:170px;width:100%;height:58px;object-fit:contain}
   @media(max-width:820px){.partner{grid-template-columns:1fr;padding:30px}}
   /* TEAM */
   .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:40px}
@@ -135,7 +144,7 @@
   .contact .lead p{color:var(--muted);line-height:1.65;font-size:15px;margin-top:16px}
   .cinfo{margin-top:30px;display:flex;flex-direction:column;gap:16px}
   .cinfo a,.cinfo div{display:flex;gap:14px;align-items:center;font-size:15px;color:var(--ink)}
-  .cinfo .ic{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;background:var(--card)}
+  .cinfo .ic{width:44px;height:44px;border-radius:13px;border:1px solid var(--line);display:grid;place-items:center;background:var(--card);font-size:18px;flex:none}
   .cinfo small{display:block;color:var(--muted);font-size:12px}
   form{border:1px solid var(--line);border-radius:20px;padding:30px;background:var(--card)}
   .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -151,13 +160,17 @@
   footer.f{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
   .frow2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:13px}
   .frow2 .brand b{color:var(--ink)}
+  .frow2 .brand span{line-height:1.5}
   .legal{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
   .legal a:hover{color:var(--ink)}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
   @media(max-width:620px){
-    .wrap{width:375px;max-width:100%;margin-left:0;margin-right:auto;padding:0 18px}
-    nav.top .row{min-height:auto;padding:10px 18px;gap:10px}
+    html{scroll-padding-top:92px}
+    body{padding-top:64px}
+    section[id], header[id]{scroll-margin-top:92px}
+    .wrap{padding:0 18px}
+    nav.top .row{min-height:64px;gap:10px}
     nav.top .row>.btn{display:none}
     .brand{gap:10px}
     .brand img{width:34px;height:34px}
@@ -173,9 +186,18 @@
     .hero .cta .btn{width:100%;justify-content:center}
     .svcs{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr;gap:12px;margin-top:42px}
-    .stat{padding:16px}
-    .stat b{font-size:24px}
+    .stat{padding:18px;min-height:134px}
+    .stat b{font-size:30px}
     .pad{padding:58px 0}
+    .client{min-height:auto}
+    .quote{padding:26px}
+    .quote p{font-size:16px}
+    .quote .who{align-items:flex-start}
+    .logos{grid-template-columns:1fr 1fr}
+    .logobox{min-height:94px;padding:16px}
+    .frow2{flex-direction:column;align-items:flex-start;gap:22px}
+    .frow2 .brand{align-items:flex-start}
+    .legal{flex-direction:column;align-items:flex-start;gap:10px}
   }
   @media(max-width:380px){
     nav.top .row{padding-left:14px;padding-right:14px}
@@ -189,10 +211,11 @@
   <div class="wrap row">
     <a class="brand" href="#top"><img src="favicon.svg" alt="" /><b>OBSTRAKEN</b></a>
     <div class="navlinks">
+      <a href="#enjeux">Enjeux</a>
       <a href="#approche">Approche</a>
       <a href="#services">Services</a>
       <a href="#references">Références</a>
-      <a href="#technos">Technos</a>
+      <a href="#tech">Tech</a>
       <a href="#equipe">Équipe</a>
     </div>
     <a class="btn btn-primary" href="#contact">Diagnostic</a>
@@ -212,10 +235,10 @@
       </div>
     </div>
     <div class="stats">
-      <div class="stat"><b class="grad-t">7</b><span>experts associés, mobilisés sur votre projet</span></div>
-      <div class="stat"><b class="grad-t">+100</b><span>ans d'expérience data cumulés</span></div>
-      <div class="stat"><b class="grad-t">6 sem.</b><span>pour les premiers résultats concrets</span></div>
-      <div class="stat"><b class="grad-t">A→Z</b><span>un seul contrat, prix fixe tout inclus</span></div>
+      <div class="stat"><div class="stat-ic">👥</div><b class="grad-t">7</b><span>experts associés mobilisés sur votre projet</span></div>
+      <div class="stat"><div class="stat-ic">📈</div><b class="grad-t">+100</b><span>ans d'expérience data cumulés</span></div>
+      <div class="stat"><div class="stat-ic">⏱️</div><b class="grad-t">6 sem.</b><span>pour les premiers résultats concrets</span></div>
+      <div class="stat"><div class="stat-ic">🤝</div><b class="grad-t">A→Z</b><span>un contrat unique, prix fixe tout inclus</span></div>
     </div>
   </div>
 </header>
@@ -224,15 +247,15 @@
 <section class="pad" id="enjeux">
   <div class="wrap">
     <div class="head reveal">
-      <div class="eyebrow">Vos enjeux</div>
+      <div class="eyebrow">Enjeux</div>
       <h2 style="margin-top:14px">Freins actuels, leviers concrets.</h2>
       <p>Obstraken commence par clarifier ce qui bloque, puis transforme chaque frein en décision, en sécurité et en automatisation exploitable.</p>
     </div>
     <div class="enjeux">
-      <div class="enjeu reveal"><span class="tag">Frein</span><h4>Données dispersées</h4><p>Les outils métiers ne se parlent pas et les chiffres varient selon les équipes.</p><p class="lever"><b>Levier Obstraken</b><br/>Un socle unifié, gouverné et documenté, qui consolide sources, référentiels et indicateurs.</p></div>
-      <div class="enjeu reveal"><span class="tag">Frein</span><h4>Décisions trop lentes</h4><p>Les arbitrages reposent sur des exports manuels, des fichiers isolés ou l'intuition.</p><p class="lever"><b>Levier Obstraken</b><br/>Des dashboards utiles, branchés sur des flux fiables, pour piloter à partir d'une donnée fraîche.</p></div>
-      <div class="enjeu reveal"><span class="tag">Frein</span><h4>Conformité subie</h4><p>RGPD, NIS2, cybersécurité et traçabilité deviennent un coût et un risque permanent.</p><p class="lever"><b>Levier Obstraken</b><br/>Une architecture cloud maîtrisée, des accès structurés et une documentation exploitable par vos équipes.</p></div>
-      <div class="enjeu reveal"><span class="tag">Frein</span><h4>Manque d'équipe data</h4><p>Les compétences sont rares, fragmentées, ou déjà absorbées par l'exploitation du quotidien.</p><p class="lever"><b>Levier Obstraken</b><br/>Un collectif senior mobilisé de A à Z : cadrage, build, run, IA et transmission.</p></div>
+      <div class="enjeu reveal"><span class="tag"><span class="emoji">⚠️</span>Frein</span><h4>Données dispersées</h4><p>Les outils métiers ne se parlent pas et les chiffres varient selon les équipes.</p><div class="lever"><span class="lever-ic">✅</span><p><b>Levier Obstraken</b><br/>Un socle unifié, gouverné et documenté, qui consolide sources, référentiels et indicateurs.</p></div></div>
+      <div class="enjeu reveal"><span class="tag"><span class="emoji">⏳</span>Frein</span><h4>Décisions trop lentes</h4><p>Les arbitrages reposent sur des exports manuels, des fichiers isolés ou l'intuition.</p><div class="lever"><span class="lever-ic">⚡</span><p><b>Levier Obstraken</b><br/>Des dashboards utiles, branchés sur des flux fiables, pour piloter à partir d'une donnée fraîche.</p></div></div>
+      <div class="enjeu reveal"><span class="tag"><span class="emoji">🔒</span>Frein</span><h4>Conformité subie</h4><p>RGPD, NIS2, cybersécurité et traçabilité deviennent un coût et un risque permanent.</p><div class="lever"><span class="lever-ic">🛡️</span><p><b>Levier Obstraken</b><br/>Une architecture cloud maîtrisée, des accès structurés et une documentation exploitable par vos équipes.</p></div></div>
+      <div class="enjeu reveal"><span class="tag"><span class="emoji">🧩</span>Frein</span><h4>Manque d'équipe data</h4><p>Les compétences sont rares, fragmentées, ou déjà absorbées par l'exploitation du quotidien.</p><div class="lever"><span class="lever-ic">🚀</span><p><b>Levier Obstraken</b><br/>Un collectif senior mobilisé de A à Z : cadrage, build, run, IA et transmission.</p></div></div>
     </div>
   </div>
 </section>
@@ -256,7 +279,7 @@
 <section class="steps-band pad" id="approche">
   <div class="wrap">
     <div class="head reveal">
-      <div class="eyebrow">Notre réponse — 3 étapes, 1 résultat</div>
+      <div class="eyebrow">Approche</div>
       <h2 style="margin-top:14px">Voir clair, construire, exploiter.</h2>
       <p>Premiers résultats dès 6 semaines. Infrastructure complète en 6 mois. On la fait tourner pour vous — et vous restez maître de tout.</p>
     </div>
@@ -266,9 +289,9 @@
       <div class="step reveal"><span class="big">03</span><div class="k">NEXUS RUN</div><div class="verb">Faire tourner</div><h3>Exploitation gérée</h3><p>Votre data tourne, évolue et reste conforme — vous n'y touchez pas.</p><div class="when">12 à 36 mois · Tout inclus</div></div>
     </div>
     <div class="reass">
-      <div><span class="ok">✓</span><div><b>Hébergé sur S3NS</b> (Thales × Google). Infrastructure as Code, monitoring continu, SLA contractuel. Conforme RGPD, NIS2, ANSSI.</div></div>
-      <div><span class="ok">✓</span><div><b>Architecture transmissible.</b> Code, données, documentation et infrastructure restent exploitables par vos équipes.</div></div>
-      <div><span class="ok">✓</span><div><b>Dossier technique disponible.</b> Stack, sécurité, SLA, intégration SI : documentation détaillée pour vos équipes.</div></div>
+      <div class="proof"><span class="ok">✓</span><h4>Hébergé sur S3NS</h4><p>(Thales × Google). Infrastructure as Code, monitoring continu, SLA contractuel. Conforme RGPD, NIS2, ANSSI.</p></div>
+      <div class="proof"><span class="ok">↗</span><h4>Architecture transmissible</h4><p>Code, données, documentation et infrastructure restent exploitables par vos équipes après chaque jalon.</p></div>
+      <div class="proof"><span class="ok">☑</span><h4>Dossier technique disponible</h4><p>Stack, sécurité, SLA et intégration SI documentés pour vos équipes métier, data et IT.</p></div>
     </div>
   </div>
 </section>
@@ -277,7 +300,7 @@
 <section class="pad" id="services">
   <div class="wrap">
     <div class="head reveal">
-      <div class="eyebrow">La chaîne complète</div>
+      <div class="eyebrow">Services</div>
       <h2 style="margin-top:14px">Tout le cycle de vie de la donnée,<br/>un seul interlocuteur.</h2>
       <p>Obstraken ne livre pas un dashboard de plus. Nous bâtissons une usine de données fiable, souveraine et sécurisée pour apporter des réponses justes à des questions judicieuses.</p>
     </div>
@@ -298,26 +321,26 @@
 <!-- REFERENCES -->
 <section class="pad" id="references" style="padding-top:0">
   <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">Ils nous font confiance</div><h2 style="margin-top:14px">Des usines de données en production,<br/>dans des secteurs exigeants.</h2></div>
+    <div class="head reveal"><div class="eyebrow">Références</div><h2 style="margin-top:14px">Des usines de données en production,<br/>dans des secteurs exigeants.</h2></div>
     <div class="clients">
-      <div class="client reveal"><div class="nm">LPCR</div><div class="tag">Médico-social · ~1 000 crèches</div><p>Infrastructure data complète de A à Z — datawarehouse, dashboards, pilotage opérationnel.</p></div>
-      <div class="client reveal"><div class="nm">EMEIS</div><div class="tag">Santé · ~220 EHPAD + 180 cliniques</div><p>Infrastructure data complète de A à Z.</p></div>
-      <div class="client reveal"><div class="nm">IQVIA</div><div class="tag">Pharma · leaders mondiaux</div><p>Performance commerciale pour les plus grands laboratoires mondiaux.</p></div>
+      <div class="client reveal"><div class="client-logo"><img src="assets/clients/les-petits-chaperons-rouges-crop.png" alt="Les Petits Chaperons Rouges" /></div><div><div class="tag">Médico-social · ~1 000 crèches</div><p>Datawarehouse, dashboards et pilotage opérationnel sur une base centralisée.</p></div></div>
+      <div class="client reveal"><div class="client-logo"><img src="assets/clients/emeis-crop.png" alt="emeis" /></div><div><div class="tag">Santé · ~220 EHPAD + 180 cliniques</div><p>Structuration d'une chaîne data fiable pour piloter des environnements multisites.</p></div></div>
+      <div class="client reveal"><div class="client-logo"><img src="assets/clients/iqvia-crop.png" alt="IQVIA" /></div><div><div class="tag">Pharma · leaders mondiaux</div><p>Performance commerciale et analytics pour les plus grands laboratoires mondiaux.</p></div></div>
     </div>
     <div class="quote reveal">
       <p>« La data n'est plus un sujet technique. Elle est devenue un levier de pilotage. Les résultats sont au-delà des attentes : une donnée centralisée, des indicateurs fiables, des tableaux de bord réellement utiles pour le pilotage. »</p>
       <p>« Au-delà des livrables, c'est l'équipe qui fait la différence — exigence, transparence, sens du résultat… et plaisir de travailler ensemble. »</p>
-      <div class="who"><b>Claire Bourrely</b> — Directrice des Systèmes d'Information, LPCR (Les Petits Chaperons Rouges)</div>
+      <div class="who"><img class="avatar" src="assets/testimonials/claire-bourrely.png" alt="Claire Bourrely" /><span><b>Claire Bourrely</b> — Directrice des Systèmes d'Information, LPCR (Les Petits Chaperons Rouges)</span></div>
     </div>
   </div>
 </section>
 
-<!-- TECHNOS -->
-<section class="pad" id="technos" style="padding-top:0">
+<!-- TECH -->
+<section class="pad" id="tech" style="padding-top:0">
   <div class="wrap">
     <div class="partner reveal">
       <div>
-        <div class="eyebrow">Technos</div>
+        <div class="eyebrow">Tech</div>
         <h2 style="margin-top:12px">Cloud souverain, cloud natif et BI dans la même chaîne.</h2>
         <p>Obstraken sait travailler sur GCP natif, S3NS, Azure et Qlik. L'objectif n'est pas d'empiler des outils : c'est de choisir le bon niveau de souveraineté, de sécurité et d'industrialisation pour vos données.</p>
         <div class="offers">
@@ -328,10 +351,10 @@
         </div>
       </div>
       <div class="logos">
-        <div class="logobox"><img src="assets/partners/s3ns.svg" alt="S3NS" /><span>S3NS</span></div>
-        <div class="logobox"><img src="assets/partners/googlecloud.svg" alt="Google Cloud" /><span>GCP natif</span></div>
-        <div class="logobox"><img src="assets/partners/azure.svg" alt="Microsoft Azure" /><span>Azure</span></div>
-        <div class="logobox"><img src="assets/partners/qlik.svg" alt="Qlik" /><span>Qlik</span></div>
+        <div class="logobox"><img src="assets/partners/s3ns.png" alt="S3NS" /></div>
+        <div class="logobox"><img src="assets/partners/googlecloud.png" alt="Google Cloud" /></div>
+        <div class="logobox"><img src="assets/partners/azure.svg" alt="Microsoft Azure" /></div>
+        <div class="logobox"><img src="assets/partners/qlik.svg" alt="Qlik" /></div>
       </div>
     </div>
   </div>
@@ -340,7 +363,7 @@
 <!-- TEAM -->
 <section class="pad" id="equipe" style="padding-top:0">
   <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">L'équipe</div><h2 style="margin-top:14px">7 experts data · +100 ans d'expérience cumulés.</h2><p>Un collectif senior et pluridisciplinaire. Vous travaillerez nécessairement avec chacun d'entre eux.</p></div>
+    <div class="head reveal"><div class="eyebrow">Équipe</div><h2 style="margin-top:14px">7 experts data : +100 ans d'expérience cumulés.</h2><p>Un collectif senior et pluridisciplinaire. Vous travaillerez nécessairement avec chacun d'entre eux.</p></div>
     <div class="team">
       <div class="member reveal"><div class="ph"><img src="assets/mikael.png" alt="Mikael Cleuziou" /></div><div class="info"><h4>Mikael Cleuziou</h4><div class="role">Fondateur · Cadrage & Stratégie</div><div class="exp">21 ans d'expérience</div></div></div>
       <div class="member reveal"><div class="ph"><img src="assets/nico.png" alt="Nicolas Pouzet" /></div><div class="info"><h4>Nicolas Pouzet</h4><div class="role">Directeur de Projets</div><div class="exp">20 ans d'expérience</div></div></div>
@@ -374,9 +397,9 @@
         <h2 style="margin-top:14px">Bâtissons ensemble votre usine de données.</h2>
         <p>Vous avez un projet data à structurer, une infrastructure à fiabiliser ou des prises de décision à accélérer ? Collaborons. Écrivez-nous, nous vous répondrons dans les plus brefs délais.</p>
         <div class="cinfo">
-          <a href="mailto:mcleuziou@obstraken.com"><span class="ic">@</span><span>mcleuziou@obstraken.com<small>Email</small></span></a>
-          <a href="tel:+33607224926"><span class="ic">Tel</span><span>+33 6 07 22 49 26<small>Téléphone</small></span></a>
-          <div><span class="ic">FR</span><span>Paris, France<small>Siège social</small></span></div>
+          <a href="mailto:mcleuziou@obstraken.com"><span class="ic">✉️</span><span>mcleuziou@obstraken.com<small>Email</small></span></a>
+          <a href="tel:+33607224926"><span class="ic">☎️</span><span>+33 6 07 22 49 26<small>Téléphone</small></span></a>
+          <div><span class="ic">📍</span><span>Paris, France<small>Siège social</small></span></div>
         </div>
       </div>
       <form id="cform" class="reveal" novalidate>

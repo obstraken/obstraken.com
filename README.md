@@ -13,5 +13,5 @@ python -m http.server 8080
 ## Formulaire de contact
 
 Site statique : à la soumission, le formulaire ouvre le client mail de l'utilisateur
-(pré-rempli vers `mcleuziou@obstraken.com`). Pour un envoi côté serveur, brancher le
+(pré-rempli vers `team@obstraken.com`). Pour un envoi côté serveur, brancher le
 `<form>` sur un service (Formspree, Netlify Forms, une API…).

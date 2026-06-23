@@ -23,7 +23,7 @@
   .grad-t{color:var(--cyan)}
   .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan);font-weight:600;line-height:1.6;overflow-wrap:anywhere}
   section{position:relative;border-top:1px solid var(--section-line)}
-  section[id], header[id]{scroll-margin-top:var(--nav-h)}
+  section[id], header[id], #services{scroll-margin-top:var(--nav-h)}
   h2{font-family:'Geist';font-weight:800;font-size:40px;line-height:1.1;letter-spacing:0}
   /* NAV */
   nav.top{position:fixed;top:0;left:0;right:0;width:100%;z-index:500;backdrop-filter:blur(14px);background:rgba(11,21,48,.9);border-bottom:1px solid var(--section-line);box-shadow:0 14px 34px rgba(0,0,0,.18)}
@@ -33,6 +33,11 @@
   .brand b{font-family:'Geist';font-weight:800;letter-spacing:.04em;font-size:17px}
   .navlinks{display:none;gap:18px;font-size:13px;color:var(--muted);align-items:center;white-space:nowrap}
   .navlinks a:hover{color:var(--ink)}
+  .navlinks a.nav-spot{font-weight:700;color:var(--ink);letter-spacing:.02em}
+  .navlinks a.nav-spot-ia{color:var(--cyan)}
+  .navlinks a.nav-spot-ia:hover{color:#7ee8f4}
+  .navlinks a.nav-spot-contact{padding:7px 14px;border:1px solid rgba(79,214,230,.35);border-radius:999px;color:var(--cyan);font-weight:700}
+  .navlinks a.nav-spot-contact:hover{border-color:rgba(79,214,230,.6);color:#7ee8f4;background:rgba(79,214,230,.06)}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:14px;transition:.2s;border:1px solid transparent;cursor:pointer}
   .btn-primary{background:var(--cyan);color:#06122b;box-shadow:0 10px 24px rgba(79,214,230,.18)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,214,230,.24)}
@@ -58,23 +63,45 @@
   .pad{padding:80px 0}
   .head{max-width:680px;margin-bottom:46px}
   .head p{margin-top:16px;color:var(--muted);font-size:17px;line-height:1.6}
-  .enjeux{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto;gap:18px}
-  .enjeu{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px;background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.03));transition:.22s;display:grid;grid-template-rows:subgrid;grid-row:span 2}
-  .enjeu-frein{display:flex;flex-direction:column;min-height:0}
-  .enjeu::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--cyan),rgba(100,230,162,.7));opacity:.72}
-  .enjeu:hover{border-color:rgba(79,214,230,.42);transform:translateY(-4px);box-shadow:0 22px 54px rgba(0,0,0,.24)}
-  .badge{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:7px 12px;border-radius:999px;border:1px solid transparent;font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-  .badge .emoji{font-size:15px;letter-spacing:0}
-  .badge-risk{background:rgba(255,211,106,.11);border-color:rgba(255,211,106,.22);color:#ffe2a0}
-  .badge-lever{background:rgba(100,230,162,.12);border-color:rgba(100,230,162,.26);color:#acf6cc}
-  .enjeu h4{font-family:'Geist';font-size:20px;line-height:1.25;font-weight:800;margin:22px 0 12px}
-  .enjeu p{font-size:14px;color:var(--muted);line-height:1.62}
-  .enjeu .lever{position:relative;padding-top:16px;display:flex;flex-direction:column;min-height:0}
-  .enjeu .lever::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.28),rgba(100,230,162,.2),rgba(255,255,255,.06))}
-  .enjeu .lever p{margin-top:10px}
-  .enjeux-why{margin-top:58px;padding-top:44px;border-top:1px solid var(--line)}
+  /* ENJEUX — sélecteur frein → levier */
+  .fx{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:34px;align-items:stretch}
+  .fx-list{display:flex;flex-direction:column;gap:2px}
+  .fx-item{position:relative;display:flex;align-items:center;gap:13px;width:100%;text-align:left;border:0;background:transparent;color:inherit;cursor:pointer;padding:15px 14px;border-radius:10px;transition:.18s}
+  .fx-item::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:2px;border-radius:2px;background:transparent;transition:.18s}
+  .fx-item:hover{background:rgba(255,255,255,.035)}
+  .fx-item.on{background:rgba(255,211,106,.06)}
+  .fx-item.on::before{background:linear-gradient(180deg,#ffd36a,#f4a15a)}
+  .fx-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;flex:none;background:rgba(255,255,255,.05);border:1px solid var(--line);transition:.18s;filter:grayscale(.4);opacity:.7}
+  .fx-item.on .fx-ic{background:rgba(255,211,106,.1);border-color:rgba(255,211,106,.3);filter:none;opacity:1}
+  .fx-tx{min-width:0}
+  .fx-tx b{display:block;font-family:'Geist';font-size:15px;font-weight:700;line-height:1.2}
+  .fx-tx span{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fx-num{margin-left:auto;font-family:'Geist';font-size:12px;font-weight:700;color:var(--muted);opacity:.5;flex:none}
+  .fx-item.on .fx-num{color:#ffd36a;opacity:1}
+  /* panneau levier */
+  .fx-panel{position:relative;align-self:stretch;padding:30px 30px 30px 32px;display:flex}
+  .fx-panel::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:3px;background:linear-gradient(180deg,#ffd36a,#4fd6e6 48%,#64e6a2)}
+  .fx-card{position:absolute;inset:30px 30px 30px 32px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+  .fx-card.on{position:relative;inset:auto;opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .fx-badge{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#acf6cc}
+  .fx-card .fx-big{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:26px;background:rgba(100,230,162,.1);border:1px solid rgba(100,230,162,.26);margin:18px 0 16px}
+  .fx-card h4{font-family:'Geist';font-size:24px;font-weight:800;line-height:1.18}
+  .fx-card p{font-size:15px;color:var(--muted);line-height:1.62;margin-top:12px;max-width:440px}
+  .fx-arrow{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:12.5px;font-weight:700;color:var(--cyan);letter-spacing:.02em}
+  .fx-arrow .ln{width:30px;height:2px;border-radius:2px;background:linear-gradient(90deg,#ffd36a,#64e6a2)}
+  .enjeux-why{margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
   .enjeux-why .head{margin-bottom:28px}
-  @media(max-width:1040px){.enjeux{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:820px){
+    .fx{grid-template-columns:1fr;gap:8px}
+    .fx-tx span{white-space:normal}
+    .fx-panel{padding:24px 4px 4px 20px;min-height:auto}
+    .fx-panel::before{top:2px;bottom:auto;height:46px}
+    .fx-card{position:absolute;inset:24px 4px 4px 20px}
+    .fx-card.on{position:relative;inset:auto}
+    .fx-card .fx-big{width:46px;height:46px;font-size:23px;margin:14px 0 12px}
+    .fx-card h4{font-size:21px}
+    .fx-card p{font-size:14px}
+  }
   /* STEPS */
   .steps-band{background:var(--navy-2)}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}
@@ -87,14 +114,28 @@
   .step .when{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink);font-weight:600}
   .step .big{position:absolute;right:18px;top:6px;font-family:'Geist';font-size:90px;font-weight:800;color:rgba(255,255,255,.04)}
   @media(max-width:820px){.steps{grid-template-columns:1fr}}
-  /* SERVICES */
-  .svcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-top:40px}
-  .svc{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--card);transition:.22s;position:relative;overflow:hidden}
-  .svc:hover{transform:translateY(-5px);border-color:rgba(79,214,230,.4);box-shadow:0 20px 50px rgba(0,0,0,.35)}
-  .svc .n{font-family:'Geist';font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.1em}
-  .svc h3{font-family:'Geist';font-size:19px;font-weight:700;margin:10px 0 6px}
-  .svc .sub{font-size:13px;color:var(--violet);font-style:italic;margin-bottom:12px}
-  .svc p{font-size:14px;color:var(--muted);line-height:1.6}
+  /* SERVICES — accordion grid */
+  .svc-lead{margin-top:48px;max-width:640px}
+  .svc-lead h3{font-family:'Geist';font-size:24px;font-weight:800;line-height:1.2;margin-bottom:12px}
+  .svc-lead p{color:var(--muted);font-size:16px;line-height:1.6}
+  .svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;align-items:start}
+  .svc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden;transition:border-color .22s,box-shadow .22s,transform .22s}
+  .svc:hover{border-color:rgba(79,214,230,.35);transform:translateY(-3px)}
+  .svc.is-open{border-color:rgba(79,214,230,.42);box-shadow:0 16px 44px rgba(0,0,0,.28);transform:none}
+  .svc-trigger{width:100%;display:block;position:relative;padding:24px 52px 20px 24px;background:none;border:none;color:inherit;cursor:pointer;text-align:left;font:inherit}
+  .svc-trigger:hover{background:rgba(255,255,255,.03)}
+  .svc .n{font-family:'Geist';font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.1em;display:block;margin-bottom:10px}
+  .svc-trigger-text h3{font-family:'Geist';font-size:18px;font-weight:700;line-height:1.25;margin:0 0 6px}
+  .svc .sub{font-size:13px;color:var(--violet);font-style:italic;display:block;line-height:1.45}
+  .svc-chev{position:absolute;top:20px;right:18px;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;color:var(--cyan);transition:transform .25s,border-color .22s}
+  .svc-chev svg{width:13px;height:13px}
+  .svc.is-open .svc-chev{transform:rotate(180deg);border-color:rgba(79,214,230,.45)}
+  .svc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+  .svc.is-open .svc-panel{grid-template-rows:1fr}
+  .svc-panel-inner{overflow:hidden}
+  .svc-panel p{padding:0 24px 22px;font-size:14px;color:var(--muted);line-height:1.65;margin:0;border-top:1px solid var(--line);padding-top:16px}
+  @media(max-width:900px){.svcs{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.svcs{grid-template-columns:1fr;gap:12px}}
   /* WHY */
   .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:28px}
   .why .it{display:flex;gap:14px;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.025));transition:.22s}
@@ -125,6 +166,46 @@
   .logobox{border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:22px;display:flex;align-items:center;justify-content:center;background:#f7fbff;text-align:center;min-height:112px}
   .logobox img{max-width:170px;width:100%;height:58px;object-fit:contain}
   @media(max-width:820px){.tech-grid{grid-template-columns:1fr}}
+  /* IA */
+  .ia-sov{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:36px}
+  .ia-sov-card{border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:var(--card);display:flex;flex-direction:column;gap:10px}
+  .ia-sov-card .sov-badge{display:inline-flex;align-items:center;width:max-content;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+  .ia-sov-card:first-child .sov-badge{background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.28);color:var(--cyan)}
+  .ia-sov-card:last-child .sov-badge{background:rgba(177,143,214,.14);border:1px solid rgba(177,143,214,.32);color:#d4b8f0}
+  .ia-sov-card h4{font-family:'Geist';font-size:16px;font-weight:800;line-height:1.25}
+  .ia-sov-card p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .ia-sov-card .sov-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .ia-sov-card .sov-tag{font-size:11px;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted)}
+  .ia-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+  .ia-pillar{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--card);transition:.22s}
+  .ia-pillar:hover{border-color:rgba(79,214,230,.35);transform:translateY(-3px)}
+  .ia-pillar .pillar-label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cyan);margin-bottom:6px;display:block}
+  .ia-pillar:nth-child(2) .pillar-label{color:var(--green)}
+  .ia-pillar:nth-child(3) .pillar-label{color:var(--violet)}
+  .ia-pillar h3{font-family:'Geist';font-size:18px;font-weight:800;line-height:1.2;margin-bottom:8px}
+  .ia-pillar p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .ia-lock{display:flex;align-items:center;gap:10px;margin-bottom:32px;padding:10px 16px;border-radius:10px;border:1px solid rgba(79,214,230,.18);background:rgba(79,214,230,.04);font-size:12.5px;color:var(--muted);line-height:1.45}
+  .ia-lock strong{color:var(--cyan);font-weight:600;white-space:nowrap}
+  .ia-demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .ia-demo-left h3{font-family:'Geist';font-size:22px;font-weight:800;line-height:1.2;margin-top:10px}
+  .ia-demo-left p{font-size:14px;color:var(--muted);line-height:1.6;margin-top:10px}
+  .ia-demo-steps{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+  .ia-demo-step{display:flex;align-items:flex-start;gap:14px}
+  .ia-demo-num{width:32px;height:32px;border-radius:10px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);display:grid;place-items:center;font-family:'Geist';font-size:14px;font-weight:800;color:var(--cyan);flex:none}
+  .ia-demo-step p{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
+  .ia-demo-step p strong{color:var(--ink)}
+  .ia-chat{border:1px solid rgba(79,214,230,.22);border-radius:16px;background:var(--card);overflow:hidden}
+  .ia-chat-header{padding:12px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;color:var(--muted)}
+  .ia-chat-header .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:ia-pulse 2s ease-in-out infinite}
+  @keyframes ia-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .ia-chat-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+  .ia-chat-msg{max-width:90%;padding:11px 14px;border-radius:12px;font-size:13px;line-height:1.55}
+  .ia-chat-user{align-self:flex-end;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.18);color:var(--ink)}
+  .ia-chat-ai{align-self:flex-start;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted)}
+  .ia-chat-ai strong{color:var(--ink);font-weight:600}
+  .ia-chat-ai .tag-ok{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:3px 9px;border-radius:6px;background:rgba(100,230,162,.1);border:1px solid rgba(100,230,162,.2);color:var(--green);font-size:11px;font-weight:700}
+  @media(max-width:900px){.ia-pillars{grid-template-columns:1fr}}
+  @media(max-width:760px){.ia-sov{grid-template-columns:1fr}.ia-demo-grid{grid-template-columns:1fr}.ia-lock{flex-direction:column;align-items:flex-start;gap:4px}}
   /* TEAM */
   .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:40px}
   .member{border:1px solid var(--line);border-radius:18px;background:var(--card);transition:.22s;text-align:center;padding:24px 18px}
@@ -184,13 +265,9 @@
     .diag h2{font-size:28px}
     .hero h1{font-size:33px}
     .hero p.lead{font-size:16px}
-    .svcs{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr;gap:12px;margin-top:42px}
     .stat{padding:18px}
     .stat b{font-size:30px}
-    .enjeux{grid-template-columns:1fr;grid-template-rows:none}
-    .enjeu{display:flex;flex-direction:column;grid-row:auto}
-    .enjeu .lever{margin-top:20px}
     .hero-diag{grid-template-columns:1fr;text-align:center;padding:26px 20px}
     .hero-diag .btn{justify-content:center;width:100%;white-space:normal}
     .pad{padding:58px 0}
@@ -218,11 +295,11 @@
     <div class="navlinks">
       <a href="#enjeux">Enjeux</a>
       <a href="#approche">Approche</a>
-      <a href="#services">Services</a>
+      <a href="#ia" class="nav-spot nav-spot-ia">IA</a>
       <a href="#references">Références</a>
       <a href="#tech">Tech</a>
       <a href="#equipe">Équipe</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-spot nav-spot-contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -260,11 +337,59 @@
       <h2 style="margin-top:14px">Freins actuels, leviers concrets.</h2>
       <p>Obstraken commence par clarifier ce qui bloque, puis transforme chaque frein en décision, en sécurité et en automatisation exploitable.</p>
     </div>
-    <div class="enjeux">
-      <div class="enjeu reveal"><div class="enjeu-frein"><span class="badge badge-risk"><span class="emoji">⚠️</span>Frein</span><h4>Données dispersées</h4><p>Les outils métiers ne se parlent pas et les chiffres varient selon les équipes.</p></div><div class="lever"><span class="badge badge-lever"><span class="emoji">✅</span>Levier Obstraken</span><p>Un socle unifié, gouverné et documenté, qui consolide sources, référentiels et indicateurs.</p></div></div>
-      <div class="enjeu reveal"><div class="enjeu-frein"><span class="badge badge-risk"><span class="emoji">⚠️</span>Frein</span><h4>Décisions trop lentes</h4><p>Les arbitrages reposent sur des exports manuels, des fichiers isolés ou l'intuition.</p></div><div class="lever"><span class="badge badge-lever"><span class="emoji">✅</span>Levier Obstraken</span><p>Des dashboards utiles, branchés sur des flux fiables, pour piloter à partir d'une donnée fraîche.</p></div></div>
-      <div class="enjeu reveal"><div class="enjeu-frein"><span class="badge badge-risk"><span class="emoji">⚠️</span>Frein</span><h4>Conformité subie</h4><p>RGPD, NIS2, cybersécurité et traçabilité deviennent un coût et un risque permanent.</p></div><div class="lever"><span class="badge badge-lever"><span class="emoji">✅</span>Levier Obstraken</span><p>Une architecture cloud maîtrisée, des accès structurés et une documentation exploitable par vos équipes.</p></div></div>
-      <div class="enjeu reveal"><div class="enjeu-frein"><span class="badge badge-risk"><span class="emoji">⚠️</span>Frein</span><h4>Manque d'équipe data</h4><p>Les compétences sont rares, fragmentées, ou déjà absorbées par l'exploitation du quotidien.</p></div><div class="lever"><span class="badge badge-lever"><span class="emoji">✅</span>Levier Obstraken</span><p>Un collectif senior mobilisé de A à Z : cadrage, build, run, IA et transmission.</p></div></div>
+    <div class="fx reveal">
+      <div class="fx-list" role="tablist" aria-label="Freins">
+        <button class="fx-item on" role="tab" aria-selected="true" data-fx="0">
+          <span class="fx-ic">🧩</span>
+          <span class="fx-tx"><b>Données dispersées</b><span>Les outils métiers ne se parlent pas.</span></span>
+          <span class="fx-num">01</span>
+        </button>
+        <button class="fx-item" role="tab" aria-selected="false" data-fx="1">
+          <span class="fx-ic">⏳</span>
+          <span class="fx-tx"><b>Décisions trop lentes</b><span>Exports manuels, fichiers isolés, intuition.</span></span>
+          <span class="fx-num">02</span>
+        </button>
+        <button class="fx-item" role="tab" aria-selected="false" data-fx="2">
+          <span class="fx-ic">⚖️</span>
+          <span class="fx-tx"><b>Conformité subie</b><span>RGPD, NIS2, cybersécurité, traçabilité.</span></span>
+          <span class="fx-num">03</span>
+        </button>
+        <button class="fx-item" role="tab" aria-selected="false" data-fx="3">
+          <span class="fx-ic">👥</span>
+          <span class="fx-tx"><b>Manque d'équipe data</b><span>Compétences rares et déjà absorbées.</span></span>
+          <span class="fx-num">04</span>
+        </button>
+      </div>
+      <div class="fx-panel">
+        <div class="fx-card on" role="tabpanel" data-fx="0">
+          <span class="fx-badge">✅ Levier Obstraken</span>
+          <div class="fx-big">🗄️</div>
+          <h4>Socle de données unifié</h4>
+          <p>Un socle unifié, gouverné et documenté, qui consolide sources, référentiels et indicateurs.</p>
+          <span class="fx-arrow"><span class="ln"></span>Données dispersées → données maîtrisées</span>
+        </div>
+        <div class="fx-card" role="tabpanel" data-fx="1">
+          <span class="fx-badge">✅ Levier Obstraken</span>
+          <div class="fx-big">📊</div>
+          <h4>Pilotage en temps réel</h4>
+          <p>Des dashboards utiles, branchés sur des flux fiables, pour piloter à partir d'une donnée fraîche.</p>
+          <span class="fx-arrow"><span class="ln"></span>Décisions lentes → arbitrages rapides</span>
+        </div>
+        <div class="fx-card" role="tabpanel" data-fx="2">
+          <span class="fx-badge">✅ Levier Obstraken</span>
+          <div class="fx-big">🛡️</div>
+          <h4>Conformité maîtrisée</h4>
+          <p>Une architecture cloud maîtrisée, des accès structurés et une documentation exploitable par vos équipes.</p>
+          <span class="fx-arrow"><span class="ln"></span>Conformité subie → conformité pilotée</span>
+        </div>
+        <div class="fx-card" role="tabpanel" data-fx="3">
+          <span class="fx-badge">✅ Levier Obstraken</span>
+          <div class="fx-big">🤝</div>
+          <h4>Collectif senior A→Z</h4>
+          <p>Un collectif senior mobilisé de A à Z : cadrage, build, run, IA et transmission.</p>
+          <span class="fx-arrow"><span class="ln"></span>Manque d'équipe → équipe dédiée</span>
+        </div>
+      </div>
     </div>
     <div class="enjeux-why">
       <div class="head reveal"><div class="eyebrow">Pourquoi Obstraken</div><h2 style="margin-top:14px">Six raisons d'avancer sereinement.</h2></div>
@@ -293,27 +418,125 @@
       <div class="step reveal"><span class="big">02</span><div class="k">NEXUS BUILD</div><div class="verb">Construire</div><h3>Infrastructure clé en main</h3><p>Infrastructure data complète, clé en main, déployée sur cloud souverain.</p><div class="when">3 à 6 mois · Forfait jalons</div></div>
       <div class="step reveal"><span class="big">03</span><div class="k">NEXUS RUN</div><div class="verb">Faire tourner</div><h3>Exploitation gérée</h3><p>Votre data tourne, évolue et reste conforme — vous n'y touchez pas.</p><div class="when">12 à 36 mois · Tout inclus</div></div>
     </div>
+    <div class="svc-lead reveal" id="services">
+      <h3>9 briques, un interlocuteur.</h3>
+      <p>Du diagnostic à la documentation, tout le cycle de vie de la donnée est couvert — ouvrez celles qui vous intéressent.</p>
+    </div>
+    <div class="svcs">
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">01</span><span class="svc-trigger-text"><h3>Audit & Conseil stratégique</h3><span class="sub">Le diagnostic avant l'ingénierie.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Cartographie des systèmes et des métiers, analyse des processus, formalisation du schéma directeur data. Nous posons les fondations stratégiques avant la moindre brique technique.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">02</span><span class="svc-trigger-text"><h3>Infrastructure souveraine</h3><span class="sub">Le socle technique sécurisé.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Conception et déploiement automatisés d'infrastructures cloud souveraines : S3NS (Thales & Google Cloud). Sauvegarde, PRA et résilience intégrés dès la conception. Aucune zone d'ombre.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">03</span><span class="svc-trigger-text"><h3>Chaîne data complète</h3><span class="sub">De la source à la décision.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Connexions aux sources, datalake, ODS, flux de transformation, DWH, datamarts. Conception industrielle, sécurisée et performante, de l'ingestion à la restitution.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">04</span><span class="svc-trigger-text"><h3>Master Data Management</h3><span class="sub">La donnée fiable, par construction.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Référentiels unifiés, qualité mesurée en continu, modification des données dans le socle et alimentation de vos systèmes depuis le DWH. Aucune décision sérieuse sur une donnée incertaine.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">05</span><span class="svc-trigger-text"><h3>Gouvernance & Comitologie</h3><span class="sub">Le cadre qui structure la donnée.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Politiques de données, instances de pilotage, gestion des utilisateurs et des accès. Un cadre clair qui garantit traçabilité, conformité RGPD et maîtrise opérationnelle dans la durée.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">06</span><span class="svc-trigger-text"><h3>Dashboards</h3><span class="sub">L'intelligence restituée.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Pilotage stratégique, indicateurs de qualité. Des visualisations pensées pour décider. Chaque indicateur sert une intention métier actionnable.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">07</span><span class="svc-trigger-text"><h3>Obstraken Data Hub</h3><span class="sub">Le hub de données externes.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Donnée gouvernementale, INSEE, météo, données sectorielles… Nous croisons vos données internes avec nos données externes pour décupler la puissance d'analyse et la force de l'IA.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">08</span><span class="svc-trigger-text"><h3>Intelligence Artificielle</h3><span class="sub">L'IA au service de l'industrialisation.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Intégration de briques d'IA dans la chaîne data : modèles prédictifs, analyses avancées, automatisation des traitements. Une IA ancrée dans vos données et alignée sur vos enjeux métier.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">09</span><span class="svc-trigger-text"><h3>Documentation</h3><span class="sub">Ce qui rend l'usine pérenne.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Une vingtaine de livrables documentaires structurés : architecture, exploitation, sécurité, gouvernance. Une usine de données transmissible, auditable et maintenable dans la durée.</p></div></div></div>
+    </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="pad" id="services">
+<!-- IA -->
+<section class="pad" id="ia">
   <div class="wrap">
     <div class="head reveal">
-      <div class="eyebrow">Services</div>
-      <h2 style="margin-top:14px">Tout le cycle de vie de la donnée,<br/>un seul interlocuteur.</h2>
-      <p>Obstraken ne livre pas un dashboard de plus. Nous bâtissons une usine de données fiable, souveraine et sécurisée pour apporter des réponses justes à des questions judicieuses.</p>
+      <div class="eyebrow">Intelligence Artificielle</div>
+      <h2 style="margin-top:14px">Des réponses <span class="grad-t">justes</span>, des données <span style="color:var(--green)">fiables</span>, un périmètre <span style="color:var(--violet)">sécurisé</span>.</h2>
+      <p>Nous fiabilisons et structurons vos données d'abord — l'IA produit ensuite des décisions éclairées, pas des hallucinations. Hébergé en France, sous vos contrats, sans transfert hors de votre périmètre.</p>
     </div>
-    <div class="svcs">
-      <div class="svc reveal"><div class="n">— 01</div><h3>Audit & Conseil stratégique</h3><div class="sub">Le diagnostic avant l'ingénierie.</div><p>Cartographie des systèmes et des métiers, analyse des processus, formalisation du schéma directeur data. Nous posons les fondations stratégiques avant la moindre brique technique.</p></div>
-      <div class="svc reveal"><div class="n">— 02</div><h3>Infrastructure souveraine</h3><div class="sub">Le socle technique sécurisé.</div><p>Conception et déploiement automatisés d'infrastructures cloud souveraines : S3NS (Thales & Google Cloud). Sauvegarde, PRA et résilience intégrés dès la conception. Aucune zone d'ombre.</p></div>
-      <div class="svc reveal"><div class="n">— 03</div><h3>Chaîne data complète</h3><div class="sub">De la source à la décision.</div><p>Connexions aux sources, datalake, ODS, flux de transformation, DWH, datamarts. Conception industrielle, sécurisée et performante, de l'ingestion à la restitution.</p></div>
-      <div class="svc reveal"><div class="n">— 04</div><h3>Master Data Management</h3><div class="sub">La donnée fiable, par construction.</div><p>Référentiels unifiés, qualité mesurée en continu, modification des données dans le socle et alimentation de vos systèmes depuis le DWH. Aucune décision sérieuse sur une donnée incertaine.</p></div>
-      <div class="svc reveal"><div class="n">— 05</div><h3>Gouvernance & Comitologie</h3><div class="sub">Le cadre qui structure la donnée.</div><p>Politiques de données, instances de pilotage, gestion des utilisateurs et des accès. Un cadre clair qui garantit traçabilité, conformité RGPD et maîtrise opérationnelle dans la durée.</p></div>
-      <div class="svc reveal"><div class="n">— 06</div><h3>Dashboards</h3><div class="sub">L'intelligence restituée.</div><p>Pilotage stratégique, indicateurs de qualité. Des visualisations pensées pour décider. Chaque indicateur sert une intention métier actionnable.</p></div>
-      <div class="svc reveal"><div class="n">— 07</div><h3>Obstraken Data Hub</h3><div class="sub">Le hub de données externes.</div><p>Donnée gouvernementale, INSEE, météo, données sectorielles… Nous croisons vos données internes avec nos données externes pour décupler la puissance d'analyse et la force de l'IA.</p></div>
-      <div class="svc reveal"><div class="n">— 08</div><h3>Intelligence Artificielle</h3><div class="sub">L'IA au service de l'industrialisation.</div><p>Intégration de briques d'IA dans la chaîne data : modèles prédictifs, analyses avancées, automatisation des traitements. Une IA ancrée dans vos données et alignée sur vos enjeux métier.</p></div>
-      <div class="svc reveal"><div class="n">— 09</div><h3>Documentation</h3><div class="sub">Ce qui rend l'usine pérenne.</div><p>Une vingtaine de livrables documentaires structurés : architecture, exploitation, sécurité, gouvernance. Une usine de données transmissible, auditable et maintenable dans la durée.</p></div>
+
+    <div class="ia-sov reveal">
+      <div class="ia-sov-card">
+        <span class="sov-badge">Mode GCP France</span>
+        <h4>IA sous contrats Google, instances France</h4>
+        <p>Infrastructure Google Cloud en France. Accès aux meilleurs modèles : Gemini, Claude et OpenAI via Vertex AI.</p>
+        <div class="sov-tags">
+          <span class="sov-tag">Gemini</span>
+          <span class="sov-tag">Claude</span>
+          <span class="sov-tag">OpenAI</span>
+          <span class="sov-tag">Vertex AI</span>
+        </div>
+      </div>
+      <div class="ia-sov-card">
+        <span class="sov-badge">Mode PREMI3NS</span>
+        <h4>IA 100% souveraine — SecNumCloud 3.2</h4>
+        <p>Pour les secteurs régulés, IA intégrale sur le Cloud de Confiance S3NS (Thalès). Zéro accès étranger aux données ni aux modèles.</p>
+        <div class="sov-tags">
+          <span class="sov-tag">S3NS / Thalès</span>
+          <span class="sov-tag">SecNumCloud 3.2</span>
+          <span class="sov-tag">Données sensibles</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ia-pillars reveal">
+      <div class="ia-pillar">
+        <span class="pillar-label">Anticiper</span>
+        <h3>Prédire</h3>
+        <p>Modèles prédictifs sur vos datamarts : churn, charge, scoring commercial.</p>
+      </div>
+      <div class="ia-pillar">
+        <span class="pillar-label">Automatiser</span>
+        <h3>Surveiller</h3>
+        <p>Agents IA qui génèrent rapports, dashboards et alertes métier en autonomie.</p>
+      </div>
+      <div class="ia-pillar">
+        <span class="pillar-label">Augmenter</span>
+        <h3>Interroger</h3>
+        <p>Copilote conversationnel : questions en français, réponses chiffrées, sans SQL.</p>
+      </div>
+    </div>
+
+    <div class="ia-lock reveal">
+      <strong>🔒 Rien ne sort.</strong>
+      <span>Aucune donnée ne quitte votre périmètre — pas d'entraînement sur vos données, pas d'accès tiers, pas de transfert hors UE.</span>
+    </div>
+
+    <div class="ia-demo-grid reveal">
+      <div class="ia-demo-left">
+        <div class="eyebrow">Le résultat concret</div>
+        <h3>Vos utilisateurs créent leurs alertes métier — en français</h3>
+        <div class="ia-demo-steps">
+          <div class="ia-demo-step">
+            <div class="ia-demo-num">1</div>
+            <p><strong>L'utilisateur décrit son besoin</strong> en une phrase, comme il le dirait à un collègue</p>
+          </div>
+          <div class="ia-demo-step">
+            <div class="ia-demo-num">2</div>
+            <p><strong>L'agent vérifie et confirme</strong> la requête sur les datamarts autorisés</p>
+          </div>
+          <div class="ia-demo-step">
+            <div class="ia-demo-num">3</div>
+            <p><strong>L'alerte est active</strong> — notification par email, Slack ou Teams dès que la condition est remplie</p>
+          </div>
+        </div>
+      </div>
+      <div class="ia-chat">
+        <div class="ia-chat-header">
+          <span class="dot"></span>
+          Copilote Obstraken — connecté à vos datamarts
+        </div>
+        <div class="ia-chat-body">
+          <div class="ia-chat-msg ia-chat-user">
+            Préviens-moi si un client dépasse 60 jours de retard de paiement sur plus de 10 000 €
+          </div>
+          <div class="ia-chat-msg ia-chat-ai">
+            <strong>Compris.</strong> Je vais surveiller la table <em>finance.creances_clients</em> pour les créances &gt; 10 000 € avec un délai &gt; 60 jours.<br><br>
+            Notification par : <strong>email + Teams</strong><br>
+            Fréquence de vérification : <strong>quotidienne à 8h</strong>
+            <span class="tag-ok">✓ Alerte créée</span>
+          </div>
+          <div class="ia-chat-msg ia-chat-user">
+            Ajoute aussi une alerte si le pipeline commercial baisse de plus de 15% sur une semaine
+          </div>
+          <div class="ia-chat-msg ia-chat-ai">
+            <strong>C'est fait.</strong> Je compare le pipeline total <em>commercial.pipeline_hebdo</em> chaque lundi à S-1.<br><br>
+            Seuil : baisse &gt; 15%<br>
+            Destinataire : vous + direction commerciale
+            <span class="tag-ok">✓ Alerte créée</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -385,7 +608,7 @@
         <h2 style="margin-top:14px">Bâtissons ensemble votre usine de données.</h2>
         <p>Vous avez un projet data à structurer, une infrastructure à fiabiliser ou des prises de décision à accélérer ? Collaborons. Écrivez-nous, nous vous répondrons dans les plus brefs délais.</p>
         <div class="cinfo">
-          <a href="mailto:mcleuziou@obstraken.com"><span class="ic">✉️</span><span>mcleuziou@obstraken.com<small>Email</small></span></a>
+          <a href="mailto:team@obstraken.com"><span class="ic">✉️</span><span>team@obstraken.com<small>Email</small></span></a>
           <a href="tel:+33607224926"><span class="ic">☎️</span><span>+33 6 07 22 49 26<small>Téléphone</small></span></a>
           <div><span class="ic">📍</span><span>Paris, France<small>Siège social</small></span></div>
         </div>
@@ -402,7 +625,7 @@
         <div class="field"><label for="m">Votre projet *</label><textarea id="m" name="message" required placeholder="Décrivez votre besoin en quelques lignes…"></textarea></div>
         <p class="priv">Les données transmises via ce formulaire sont traitées par OBSTRAKEN pour répondre à votre demande. Vous disposez d'un droit d'accès, de rectification et de suppression.</p>
         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Envoyer ma demande</button>
-        <div class="ok-msg" id="ok">Merci, votre message est bien préparé. Votre logiciel de messagerie va s'ouvrir pour finaliser l'envoi à <b>mcleuziou@obstraken.com</b>.</div>
+        <div class="ok-msg" id="ok">Merci, votre message est bien préparé. Votre logiciel de messagerie va s'ouvrir pour finaliser l'envoi à <b>team@obstraken.com</b>.</div>
       </form>
     </div>
   </div>
@@ -465,13 +688,38 @@
   })();
   /* Reveal on scroll */
   (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();
+  /* Sélecteur frein → levier */
+  (function(){
+    var items=Array.prototype.slice.call(document.querySelectorAll('.fx-item'));
+    var cards=Array.prototype.slice.call(document.querySelectorAll('.fx-card'));
+    if(!items.length)return;
+    function select(i){
+      items.forEach(function(it){var on=it.getAttribute('data-fx')===String(i);it.classList.toggle('on',on);it.setAttribute('aria-selected',on?'true':'false');});
+      cards.forEach(function(c){c.classList.toggle('on',c.getAttribute('data-fx')===String(i));});
+    }
+    items.forEach(function(it){
+      var i=it.getAttribute('data-fx');
+      it.addEventListener('click',function(){select(i);});
+      it.addEventListener('mouseenter',function(){select(i);});
+    });
+  })();
+  /* Services accordion */
+  (function(){
+    document.querySelectorAll('.svc-trigger').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var card=btn.closest('.svc');
+        var open=card.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded',open?'true':'false');
+      });
+    });
+  })();
   /* Contact form */
   document.getElementById('cform').addEventListener('submit',function(ev){
     ev.preventDefault();if(!this.checkValidity()){this.reportValidity();return;}
     var f=this,get=function(n){return encodeURIComponent((f.elements[n].value||'').trim());};
     var body='Nom: '+get('nom')+'%0D%0AEmail: '+get('email')+'%0D%0ASociété: '+get('societe')+'%0D%0ATéléphone: '+get('tel')+'%0D%0A%0D%0A'+get('message');
     document.getElementById('ok').style.display='block';
-    window.location.href='mailto:mcleuziou@obstraken.com?subject='+encodeURIComponent('Demande de diagnostic data — '+(f.elements['societe'].value||f.elements['nom'].value))+'&body='+body;
+    window.location.href='mailto:team@obstraken.com?subject='+encodeURIComponent('Demande de diagnostic data — '+(f.elements['societe'].value||f.elements['nom'].value))+'&body='+body;
   });
 </script>
 </body>

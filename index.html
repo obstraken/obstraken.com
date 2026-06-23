@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Obstraken - Bâtisseur d'usines de données souveraines</title>
+<title>Obstraken - Bâtisseur d'usines de données et d'IA souveraines</title>
 <meta name="description" content="Obstraken bâtit votre usine de données souveraine, sécurisée et conforme — du diagnostic à l'IA. GCP natif, S3NS, Azure et Qlik. Premiers résultats dès 6 semaines." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,14 +51,7 @@
   .hero .inner{position:relative;z-index:2;max-width:960px}
   .hero h1{font-family:'Geist';font-weight:800;font-size:66px;line-height:1.03;letter-spacing:0;margin:22px 0 0;max-width:100%;overflow-wrap:break-word}
   .hero p.lead{margin-top:24px;font-size:19px;line-height:1.6;color:var(--muted);max-width:620px;overflow-wrap:anywhere}
-  .stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
-  .stat{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:20px 22px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));display:flex;flex-direction:column;gap:12px;box-shadow:0 18px 44px rgba(0,0,0,.2)}
-  .stat::after{content:"";position:absolute;inset:auto -22px -46px auto;width:108px;height:108px;border-radius:999px;background:rgba(79,214,230,.12);filter:blur(2px)}
-  .stat-head{position:relative;z-index:1;display:flex;align-items:center;gap:14px}
-  .stat-ic{width:38px;height:38px;border-radius:12px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);display:grid;place-items:center;font-size:19px;flex:none}
-  .stat b{font-family:'Geist';font-size:38px;font-weight:800;display:block;line-height:1}
-  .stat span{position:relative;z-index:1;font-size:14px;color:var(--muted);line-height:1.45;max-width:220px}
-  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .hero .hero-cta{margin-top:32px}
   /* ENJEUX */
   .pad{padding:80px 0}
   .head{max-width:680px;margin-bottom:46px}
@@ -218,14 +211,6 @@
   .member .role{font-size:13px;color:var(--cyan);margin:4px 0 2px}
   .member .exp{font-size:12px;color:var(--muted)}
   /* DIAG + CONTACT */
-  .diag{border:1px solid rgba(79,214,230,.3);border-radius:24px;padding:46px;background:var(--card);text-align:center;margin-top:10px}
-  .diag h2{font-size:38px}
-  .diag p{margin:16px auto 28px;color:var(--muted);max-width:520px;font-size:16px;line-height:1.6}
-  .hero-diag{position:relative;z-index:2;margin-top:32px;padding:30px 34px;text-align:left;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;background:linear-gradient(145deg,rgba(79,214,230,.11),rgba(255,255,255,.035));border-radius:24px}
-  .hero-diag h2{font-size:30px}
-  .hero-diag p{margin:10px 0 0;max-width:none}
-  .hero-diag .btn{font-size:17px;padding:14px 24px;white-space:nowrap}
-  .hero-diag .btn .btn-arrow{width:32px;height:18px}
   .contact{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;margin-top:40px}
   .contact .lead p{color:var(--muted);line-height:1.65;font-size:15px;margin-top:16px}
   .cinfo{margin-top:30px;display:flex;flex-direction:column;gap:16px}
@@ -262,14 +247,8 @@
     .eyebrow{letter-spacing:.18em}
     .hero{padding:54px 0 48px}
     h2{font-size:30px}
-    .diag h2{font-size:28px}
     .hero h1{font-size:33px}
     .hero p.lead{font-size:16px}
-    .stats{grid-template-columns:1fr;gap:12px;margin-top:42px}
-    .stat{padding:18px}
-    .stat b{font-size:30px}
-    .hero-diag{grid-template-columns:1fr;text-align:center;padding:26px 20px}
-    .hero-diag .btn{justify-content:center;width:100%;white-space:normal}
     .pad{padding:58px 0}
     .client{min-height:auto}
     .quote{padding:26px}
@@ -309,22 +288,9 @@
   <div class="wrap">
     <div class="inner">
       <div class="eyebrow">L'Usine de Données Souveraine as-a-Service</div>
-      <h1>Bâtisseur d'usines de données<br/><span class="grad-t">souveraines</span>.</h1>
+      <h1>Bâtisseur d'usines de données et d'IA<br/><span class="grad-t">souveraines</span>.</h1>
       <p class="lead">Obstraken structure votre socle data de bout en bout : audit, cloud, gouvernance, dashboards et IA, avec une équipe senior unique pour passer d'une donnée dispersée à un pilotage fiable.</p>
-    </div>
-    <div class="diag hero-diag in">
-      <div>
-        <div class="eyebrow">Sans engagement</div>
-        <h2 style="margin-top:10px">Bénéficiez d'un diagnostic data gratuit.</h2>
-        <p>Une demi-journée, sans engagement — identifiez vos 3 quick wins.</p>
-      </div>
-      <a class="btn btn-primary" href="#contact">Discuter de votre projet<svg class="btn-arrow" viewBox="0 0 28 16" fill="none" aria-hidden="true"><path d="M0 8h22M16 2l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="stat-head"><div class="stat-ic">👥</div><b class="grad-t">7</b></div><span>experts associés mobilisés sur votre projet</span></div>
-      <div class="stat"><div class="stat-head"><div class="stat-ic">📈</div><b class="grad-t">+100</b></div><span>ans d'expérience data cumulés</span></div>
-      <div class="stat"><div class="stat-head"><div class="stat-ic">⏱️</div><b class="grad-t">6 sem.</b></div><span>pour les premiers résultats concrets</span></div>
-      <div class="stat"><div class="stat-head"><div class="stat-ic">🤝</div><b class="grad-t">A→Z</b></div><span>un contrat unique, prix fixe tout inclus</span></div>
+      <a class="btn btn-primary hero-cta" href="#contact">Discuter de votre projet<svg class="btn-arrow" viewBox="0 0 28 16" fill="none" aria-hidden="true"><path d="M0 8h22M16 2l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </header>

@@ -47,11 +47,118 @@
   @media(min-width:1040px){.navlinks{display:flex}}
   /* HERO */
   .hero{position:relative;padding:88px 0 68px;overflow:hidden}
-  #net{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.44}
-  .hero .inner{position:relative;z-index:2;max-width:960px}
+  .hero .inner{position:relative;z-index:2;max-width:980px}
   .hero h1{font-family:'Geist';font-weight:800;font-size:66px;line-height:1.03;letter-spacing:0;margin:22px 0 0;max-width:100%;overflow-wrap:break-word}
   .hero p.lead{margin-top:24px;font-size:19px;line-height:1.6;color:var(--muted);max-width:620px;overflow-wrap:anywhere}
-  .hero .hero-cta{margin-top:32px}
+  /* DATA FLOW — hero illustration */
+  .data-flow{position:relative;margin:64px auto 0;width:100%;max-width:1100px;min-height:300px}
+  .df-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+  .df-path{fill:none;stroke:rgba(79,214,230,.18);stroke-width:1.5;stroke-dasharray:6 8;animation:df-dash 1.1s linear infinite}
+  .df-path-out{stroke:rgba(100,230,162,.16)}
+  @keyframes df-dash{to{stroke-dashoffset:-14}}
+  .df-pulse{fill:var(--cyan)}
+  .df-svg:not(.is-ready){display:none!important}
+  .df-svg [data-df-dot]{opacity:0;filter:none}
+  .df-svg.is-ready [data-df-dot]{opacity:1}
+  .df-svg.is-ready [data-df-dot="in-1"]{opacity:.8}
+  .df-svg.is-ready [data-df-dot="in-2"]{opacity:.85}
+  .df-grid{position:relative;z-index:1;display:grid;grid-template-columns:210px 1fr 230px;gap:18px 48px;align-items:center;justify-content:center;width:max-content;max-width:100%;margin:0 auto;padding:12px 14px 0}
+  .df-col{display:flex;flex-direction:column;gap:14px;justify-content:center;width:210px}
+  .df-col-out{gap:16px;width:230px}
+  .df-node{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--line);background:rgba(9,17,40,.78);backdrop-filter:blur(8px);font-size:12px;font-weight:600;color:var(--ink);transition:border-color .35s,box-shadow .35s,transform .35s;white-space:nowrap;width:100%}
+  .df-logo-box{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;overflow:hidden}
+  .df-logo-box img{width:100%;height:100%;object-fit:contain;display:block}
+  .df-node.is-active{border-color:rgba(79,214,230,.55);box-shadow:0 0 0 1px rgba(79,214,230,.12),0 0 28px rgba(79,214,230,.18);transform:scale(1.02)}
+  .df-hub{width:100%;min-width:260px;max-width:320px;border:1px solid rgba(79,214,230,.28);border-radius:16px;padding:16px 18px 14px;background:linear-gradient(165deg,rgba(15,28,58,.94),rgba(7,14,32,.9));box-shadow:0 0 0 1px rgba(79,214,230,.05),0 20px 48px rgba(0,0,0,.38);display:flex;flex-direction:column;gap:14px;justify-self:center;position:relative}
+  .df-hub-mark{display:flex;justify-content:center}
+  .df-hub-pill{display:inline-flex;align-items:center;justify-content:center;padding:6px;border-radius:12px;border:1px solid rgba(79,214,230,.35);background:rgba(9,17,40,.55);box-shadow:0 0 24px rgba(79,214,230,.12)}
+  .df-hub-pill .df-logo-box{width:38px;height:38px;border-radius:9px}
+  .df-sov-corner{position:absolute;top:0;right:0;transform:translate(46%,-46%);z-index:5;display:inline-flex;align-items:center;gap:4px;padding:3px 6px 3px 5px;border-radius:999px;border:1px solid rgba(79,214,230,.35);background:rgba(8,16,36,.95);backdrop-filter:blur(8px);box-shadow:0 2px 10px rgba(0,0,0,.32),0 0 0 2px rgba(7,14,32,.92);color:var(--cyan);pointer-events:none}
+  .df-sov-lock{width:11px;height:11px;flex:none;display:block}
+  .df-sov-flag{width:15px;height:11px;border-radius:2px;flex:none;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+  .df-stages{display:flex;flex-direction:column;gap:10px}
+  .df-stage{display:flex;flex-direction:column;gap:5px}
+  .df-stage-name{font-size:10.5px;color:var(--muted);line-height:1.2;font-weight:500;transition:color .2s}
+  .df-stage-bar{height:4px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+  .df-stage-bar i{display:block;height:100%;width:0;border-radius:99px}
+  .df-stage:nth-child(1) .df-stage-bar i{background:var(--cyan);animation:df-prog-1 9s linear infinite}
+  .df-stage:nth-child(2) .df-stage-bar i{background:var(--blue);animation:df-prog-2 9s linear infinite}
+  .df-stage:nth-child(3) .df-stage-bar i{background:var(--green);animation:df-prog-3 9s linear infinite}
+  .df-stage:nth-child(4) .df-stage-bar i{background:var(--violet);animation:df-prog-4 9s linear infinite}
+  .df-stage:nth-child(1) .df-stage-name{animation:df-name-1 9s linear infinite}
+  .df-stage:nth-child(2) .df-stage-name{animation:df-name-2 9s linear infinite}
+  .df-stage:nth-child(3) .df-stage-name{animation:df-name-3 9s linear infinite}
+  .df-stage:nth-child(4) .df-stage-name{animation:df-name-4 9s linear infinite}
+  @keyframes df-prog-1{0%{width:0}18%{width:100%}88%{width:100%}100%{width:0}}
+  @keyframes df-prog-2{0%,18%{width:0}36%{width:100%}88%{width:100%}100%{width:0}}
+  @keyframes df-prog-3{0%,36%{width:0}54%{width:100%}88%{width:100%}100%{width:0}}
+  @keyframes df-prog-4{0%,54%{width:0}72%{width:100%}88%{width:100%}100%{width:0}}
+  @keyframes df-name-1{0%,17%{color:var(--muted)}18%,88%{color:var(--ink)}100%{color:var(--muted)}}
+  @keyframes df-name-2{0%,35%{color:var(--muted)}36%,88%{color:var(--ink)}100%{color:var(--muted)}}
+  @keyframes df-name-3{0%,53%{color:var(--muted)}54%,88%{color:var(--ink)}100%{color:var(--muted)}}
+  @keyframes df-name-4{0%,71%{color:var(--muted)}72%,88%{color:var(--ink)}100%{color:var(--muted)}}
+  .df-out{border:1px solid var(--line);border-radius:14px;padding:0;background:rgba(9,17,40,.72);backdrop-filter:blur(8px);overflow:visible;transition:border-color .35s;width:100%;position:relative}
+  @keyframes df-live{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.85)}}
+  .df-out:hover{border-color:rgba(79,214,230,.28)}
+  .df-win-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 11px;border-bottom:1px solid rgba(255,255,255,.07);border-radius:14px 14px 0 0;font-size:9.5px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.02)}
+  .df-win-title{display:inline-flex;align-items:center;gap:6px;min-width:0}
+  .df-win-logo{width:16px;height:16px;border-radius:4px;flex:none}
+  .df-win-dots{display:flex;gap:4px}
+  .df-win-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.16)}
+  .df-win-dots i:first-child{background:rgba(255,100,100,.55)}
+  .df-win-dots i:nth-child(2){background:rgba(255,200,80,.55)}
+  .df-win-dots i:nth-child(3){background:rgba(100,230,162,.55)}
+  .df-win-live{display:inline-flex;align-items:center;gap:5px;color:var(--green);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .df-win-live i{width:5px;height:5px;border-radius:50%;background:var(--green);animation:df-live 2s ease-in-out infinite}
+  .df-out-body{padding:10px 11px 11px;border-radius:0 0 14px 14px;overflow:hidden}
+  .df-dash-kpis{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px}
+  .df-kpi-tile{padding:7px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03)}
+  .df-kpi-tile.accent{border-color:rgba(100,230,162,.22);background:rgba(100,230,162,.07)}
+  .df-kpi-val{display:block;font-family:'Geist';font-size:14px;font-weight:800;line-height:1.1;color:var(--ink)}
+  .df-kpi-tile.accent .df-kpi-val{color:var(--green)}
+  .df-kpi-lbl{display:block;margin-top:2px;font-size:9px;color:var(--muted);letter-spacing:.04em}
+  .df-mini-bars{display:flex;align-items:flex-end;gap:6px;height:44px;padding:4px 2px 0}
+  .df-mini-bar{flex:1;border-radius:3px 3px 1px 1px;background:var(--cyan);transform-origin:bottom;transform:scaleY(0);opacity:.35}
+  .df-mini-bar:nth-child(1){height:42%;animation:df-bar-in 2.8s ease-in-out infinite}
+  .df-mini-bar:nth-child(2){height:68%;animation:df-bar-in 2.8s ease-in-out .15s infinite}
+  .df-mini-bar:nth-child(3){height:50%;animation:df-bar-in 2.8s ease-in-out .3s infinite}
+  .df-mini-bar:nth-child(4){height:88%;animation:df-bar-in 2.8s ease-in-out .45s infinite}
+  .df-mini-bar:nth-child(5){height:58%;animation:df-bar-in 2.8s ease-in-out .6s infinite}
+  @keyframes df-bar-in{0%,100%{transform:scaleY(0);opacity:.25}35%,65%{transform:scaleY(1);opacity:1}}
+  .df-out-chat{border-color:rgba(177,143,214,.22)}
+  .df-chat-scene{display:flex;flex-direction:column;gap:7px;min-height:88px}
+  .df-bubble{max-width:94%;padding:7px 10px;border-radius:11px;font-size:10px;line-height:1.45;opacity:0;transform:translateY(6px)}
+  .df-bubble-user{align-self:flex-end;background:rgba(79,214,230,.14);border:1px solid rgba(79,214,230,.22);color:var(--ink);animation:df-chat-user 5s ease-in-out infinite}
+  .df-bubble-ai{align-self:flex-start;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);animation:df-chat-ai 5s ease-in-out infinite}
+  .df-bubble-ai strong{color:var(--ink);font-weight:700}
+  .df-type-text{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--cyan);max-width:0;animation:df-type 5s steps(32,end) infinite,df-caret .75s step-end infinite}
+  @keyframes df-chat-user{0%,8%{opacity:0;transform:translateY(6px)}12%,42%{opacity:1;transform:none}48%,100%{opacity:.85;transform:none}}
+  @keyframes df-chat-ai{0%,38%{opacity:0;transform:translateY(6px)}46%,92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(4px)}}
+  @keyframes df-type{0%,10%{max-width:0}38%,88%{max-width:100%}100%{max-width:0}}
+  @keyframes df-caret{50%{border-color:transparent}}
+  @media(max-width:820px){
+    .data-flow{min-height:auto;margin:48px auto 0}
+    .df-grid{grid-template-columns:1fr;gap:28px;width:100%;padding:12px 10px 0}
+    .df-col,.df-col-out,.df-hub{width:100%;max-width:320px;justify-self:center}
+    .df-col.df-col-in{flex-direction:column;align-items:stretch;gap:10px}
+    .df-node{font-size:11.5px;width:100%;min-width:0;max-width:280px;margin:0 auto}
+    .df-svg.is-ready{opacity:.95}
+  }
+  @media(min-width:821px) and (max-width:980px){
+    .df-grid{gap:14px 24px}
+    .df-node{font-size:11px}
+    .df-hub{padding:14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .df-path,.df-pulse,.df-stage-bar i,.df-stage-name,.df-mini-bar,.df-bubble,.df-type-text,.df-win-live i{animation:none!important}
+    .df-svg .df-pulse{display:none}
+    .df-svg [data-df-dot]{display:none}
+    .df-stage-bar i{width:100%}
+    .df-mini-bar{transform:scaleY(1);opacity:1}
+    .df-bubble-user,.df-bubble-ai{opacity:1;transform:none}
+    .df-type-text{max-width:100%;border-right:0}
+  }
+  .hero .hero-cta{margin-top:22px}
   /* ENJEUX */
   .pad{padding:80px 0}
   .head{max-width:680px;margin-bottom:46px}
@@ -187,16 +294,14 @@
   .ia-demo-num{width:32px;height:32px;border-radius:10px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);display:grid;place-items:center;font-family:'Geist';font-size:14px;font-weight:800;color:var(--cyan);flex:none}
   .ia-demo-step p{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
   .ia-demo-step p strong{color:var(--ink)}
-  .ia-chat{border:1px solid rgba(79,214,230,.22);border-radius:16px;background:var(--card);overflow:hidden}
-  .ia-chat-header{padding:12px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;color:var(--muted)}
-  .ia-chat-header .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:ia-pulse 2s ease-in-out infinite}
-  @keyframes ia-pulse{0%,100%{opacity:1}50%{opacity:.4}}
-  .ia-chat-body{padding:18px;display:flex;flex-direction:column;gap:12px}
-  .ia-chat-msg{max-width:90%;padding:11px 14px;border-radius:12px;font-size:13px;line-height:1.55}
-  .ia-chat-user{align-self:flex-end;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.18);color:var(--ink)}
-  .ia-chat-ai{align-self:flex-start;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted)}
-  .ia-chat-ai strong{color:var(--ink);font-weight:600}
-  .ia-chat-ai .tag-ok{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:3px 9px;border-radius:6px;background:rgba(100,230,162,.1);border:1px solid rgba(100,230,162,.2);color:var(--green);font-size:11px;font-weight:700}
+  .ia-chat-panel{max-width:100%}
+  .ia-chat-panel .df-win-head{padding:10px 14px;font-size:12px}
+  .ia-chat-panel .df-win-logo{width:18px;height:18px}
+  .ia-chat-panel .df-out-body{padding:14px 16px 16px}
+  .ia-chat-panel .df-chat-scene{min-height:auto;gap:10px}
+  .ia-chat-panel .df-bubble{opacity:1;transform:none;animation:none!important;font-size:13px;padding:11px 14px;line-height:1.55;max-width:92%}
+  .ia-chat-panel .df-bubble-ai strong{color:var(--ink);font-weight:700}
+  .ia-chat-panel .tag-ok{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:3px 9px;border-radius:6px;background:rgba(100,230,162,.1);border:1px solid rgba(100,230,162,.2);color:var(--green);font-size:11px;font-weight:700}
   @media(max-width:900px){.ia-pillars{grid-template-columns:1fr}}
   @media(max-width:760px){.ia-sov{grid-template-columns:1fr}.ia-demo-grid{grid-template-columns:1fr}.ia-lock{flex-direction:column;align-items:flex-start;gap:4px}}
   /* TEAM */
@@ -284,7 +389,6 @@
 </nav>
 
 <header class="hero" id="top">
-  <canvas id="net"></canvas>
   <div class="wrap">
     <div class="inner">
       <div class="eyebrow">L'Usine de Données Souveraine as-a-Service</div>
@@ -292,6 +396,84 @@
       <p class="lead">Obstraken structure votre socle data de bout en bout : audit, cloud, gouvernance, dashboards et IA, avec une équipe senior unique pour passer d'une donnée dispersée à un pilotage fiable.</p>
       <a class="btn btn-primary hero-cta" href="#contact">Discuter de votre projet<svg class="btn-arrow" viewBox="0 0 28 16" fill="none" aria-hidden="true"><path d="M0 8h22M16 2l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
+
+      <div class="data-flow reveal" aria-label="Flux de données : sources dispersées vers usine Obstraken, puis analytics et IA">
+        <svg class="df-svg" aria-hidden="true">
+          <path class="df-path" id="df-line-in-0" data-df-line="in-0" d="M-999,-999"/>
+          <path class="df-path" id="df-line-in-1" data-df-line="in-1" d="M-999,-999"/>
+          <path class="df-path" id="df-line-in-2" data-df-line="in-2" d="M-999,-999"/>
+          <path class="df-path df-path-out" id="df-line-out-0" data-df-line="out-0" d="M-999,-999"/>
+          <path class="df-path df-path-out" id="df-line-out-1" data-df-line="out-1" d="M-999,-999"/>
+          <circle class="df-pulse" r="3" data-df-dot="in-0" cx="-9999" cy="-9999"/>
+          <circle class="df-pulse" r="3" data-df-dot="in-1" cx="-9999" cy="-9999"/>
+          <circle class="df-pulse" r="3" data-df-dot="in-2" cx="-9999" cy="-9999"/>
+          <circle r="3" fill="#64e6a2" data-df-dot="out-0" cx="-9999" cy="-9999"/>
+          <circle r="3" fill="#b18fd6" data-df-dot="out-1" cx="-9999" cy="-9999"/>
+        </svg>
+        <div class="df-grid">
+          <div class="df-col df-col-in">
+            <div class="df-node is-active" data-df-src="0">
+              <span class="df-logo-box"><img src="assets/sources/salesforce.png" alt="" /></span>
+              Salesforce
+            </div>
+            <div class="df-node" data-df-src="1">
+              <span class="df-logo-box"><img src="assets/sources/excel.png?v=2025" alt="" /></span>
+              Excel
+            </div>
+            <div class="df-node" data-df-src="2">
+              <span class="df-logo-box"><img src="assets/sources/postgresql.png" alt="" /></span>
+              PostgreSQL
+            </div>
+          </div>
+
+          <div class="df-hub">
+            <span class="df-sov-corner" title="Données hébergées en France" aria-label="Souveraineté · France"><svg class="df-sov-lock" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 11V8a5 5 0 0110 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/></svg><svg class="df-sov-flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></span>
+            <div class="df-hub-mark">
+              <span class="df-hub-pill"><span class="df-logo-box"><img src="favicon.svg" alt="Obstraken" /></span></span>
+            </div>
+            <div class="df-stages">
+              <div class="df-stage" data-stage="0"><span class="df-stage-name">Ingestion &amp; connecteurs</span><span class="df-stage-bar"><i></i></span></div>
+              <div class="df-stage" data-stage="1"><span class="df-stage-name">Lakehouse &amp; DWH</span><span class="df-stage-bar"><i></i></span></div>
+              <div class="df-stage" data-stage="2"><span class="df-stage-name">Datamarts &amp; gouvernance</span><span class="df-stage-bar"><i></i></span></div>
+              <div class="df-stage" data-stage="3"><span class="df-stage-name">Couche sémantique &amp; IA</span><span class="df-stage-bar"><i></i></span></div>
+            </div>
+          </div>
+
+          <div class="df-col df-col-out">
+            <div class="df-out df-out-dash" data-df-out="0">
+              <span class="df-sov-corner" title="Données hébergées en France" aria-label="Souveraineté · France"><svg class="df-sov-lock" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 11V8a5 5 0 0110 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/></svg><svg class="df-sov-flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></span>
+              <div class="df-win-head">
+                <span class="df-win-dots"><i></i><i></i><i></i></span>
+                <span class="df-win-title"><img class="df-win-logo" src="favicon.svg" alt="" />Tableau de bord</span>
+                <span class="df-win-live"><i></i>Live</span>
+              </div>
+              <div class="df-out-body">
+                <div class="df-dash-kpis">
+                  <div class="df-kpi-tile"><span class="df-kpi-val">€3,9M</span><span class="df-kpi-lbl">CA trimestre</span></div>
+                  <div class="df-kpi-tile accent"><span class="df-kpi-val">+12%</span><span class="df-kpi-lbl">vs T-1</span></div>
+                </div>
+                <div class="df-mini-bars" aria-hidden="true">
+                  <div class="df-mini-bar"></div><div class="df-mini-bar"></div><div class="df-mini-bar"></div><div class="df-mini-bar"></div><div class="df-mini-bar"></div>
+                </div>
+              </div>
+            </div>
+            <div class="df-out df-out-chat" data-df-out="1">
+              <span class="df-sov-corner" title="Données hébergées en France" aria-label="Souveraineté · France"><svg class="df-sov-lock" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 11V8a5 5 0 0110 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/></svg><svg class="df-sov-flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></span>
+              <div class="df-win-head">
+                <span class="df-win-dots"><i></i><i></i><i></i></span>
+                <span class="df-win-title"><img class="df-win-logo" src="favicon.svg" alt="" />Copilote IA</span>
+                <span class="df-win-live" style="color:#dcc8f2"><i style="background:#b18fd6"></i>Actif</span>
+              </div>
+              <div class="df-out-body">
+                <div class="df-chat-scene">
+                  <div class="df-bubble df-bubble-user"><span class="df-type-text">Quel est notre churn ce trimestre ?</span></div>
+                  <div class="df-bubble df-bubble-ai"><strong>4,2&nbsp;%</strong> — en baisse de 0,8 pt. Source&nbsp;: <em>clients.actifs</em></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </header>
 
@@ -477,29 +659,23 @@
           </div>
         </div>
       </div>
-      <div class="ia-chat">
-        <div class="ia-chat-header">
-          <span class="dot"></span>
-          Copilote Obstraken — connecté à vos datamarts
+      <div class="ia-chat-panel df-out df-out-chat reveal">
+        <div class="df-win-head">
+          <span class="df-win-dots"><i></i><i></i><i></i></span>
+          <span class="df-win-title"><img class="df-win-logo" src="favicon.svg" alt="" />Copilote Obstraken</span>
+          <span class="df-win-live" style="color:#dcc8f2"><i style="background:#b18fd6"></i>Connecté à vos datamarts</span>
         </div>
-        <div class="ia-chat-body">
-          <div class="ia-chat-msg ia-chat-user">
-            Préviens-moi si un client dépasse 60 jours de retard de paiement sur plus de 10 000 €
-          </div>
-          <div class="ia-chat-msg ia-chat-ai">
-            <strong>Compris.</strong> Je vais surveiller la table <em>finance.creances_clients</em> pour les créances &gt; 10 000 € avec un délai &gt; 60 jours.<br><br>
-            Notification par : <strong>email + Teams</strong><br>
-            Fréquence de vérification : <strong>quotidienne à 8h</strong>
-            <span class="tag-ok">✓ Alerte créée</span>
-          </div>
-          <div class="ia-chat-msg ia-chat-user">
-            Ajoute aussi une alerte si le pipeline commercial baisse de plus de 15% sur une semaine
-          </div>
-          <div class="ia-chat-msg ia-chat-ai">
-            <strong>C'est fait.</strong> Je compare le pipeline total <em>commercial.pipeline_hebdo</em> chaque lundi à S-1.<br><br>
-            Seuil : baisse &gt; 15%<br>
-            Destinataire : vous + direction commerciale
-            <span class="tag-ok">✓ Alerte créée</span>
+        <div class="df-out-body">
+          <div class="df-chat-scene">
+            <div class="df-bubble df-bubble-user">
+              Préviens-moi si un client dépasse 60 jours de retard de paiement sur plus de 10&nbsp;000&nbsp;€
+            </div>
+            <div class="df-bubble df-bubble-ai">
+              <strong>Compris.</strong> Je vais surveiller la table <em>finance.creances_clients</em> pour les créances &gt; 10&nbsp;000&nbsp;€ avec un délai &gt; 60 jours.<br><br>
+              Notification par : <strong>email + Teams</strong><br>
+              Fréquence de vérification : <strong>quotidienne à 8h</strong>
+              <span class="tag-ok">✓ Alerte créée</span>
+            </div>
           </div>
         </div>
       </div>
@@ -643,14 +819,138 @@
       if(window.location.hash)scrollToHash(window.location.hash,false,false);
     });
   })();
-  /* Network canvas */
+  /* Data flow — lines + active source */
   (function(){
-    var c=document.getElementById('net'),x=c.getContext('2d'),w,h,pts,raf;
-    var COL=['79,214,230','125,180,224','177,143,214'];
-    function size(){w=c.width=c.offsetWidth*devicePixelRatio;h=c.height=c.offsetHeight*devicePixelRatio;init();}
-    function init(){pts=[];var n=Math.min(70,Math.floor(w*h/26000));for(var i=0;i<n;i++){pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25*devicePixelRatio,vy:(Math.random()-.5)*.25*devicePixelRatio,c:COL[i%3]});}}
-    function loop(){x.clearRect(0,0,w,h);for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy),m=160*devicePixelRatio;if(d<m){x.strokeStyle='rgba('+p.c+','+(.16*(1-d/m))+')';x.lineWidth=devicePixelRatio;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}}for(var k=0;k<pts.length;k++){var pp=pts[k];x.fillStyle='rgba('+pp.c+',.85)';x.beginPath();x.arc(pp.x,pp.y,1.7*devicePixelRatio,0,7);x.fill();}raf=requestAnimationFrame(loop);}
-    window.addEventListener('resize',size);size();loop();
+    var flow=document.querySelector('.data-flow');
+    if(!flow)return;
+    var svg=flow.querySelector('.df-svg');
+    var hub=flow.querySelector('.df-hub');
+    var nodes=Array.prototype.slice.call(flow.querySelectorAll('.df-node'));
+    var outs=Array.prototype.slice.call(flow.querySelectorAll('[data-df-out]'));
+    var dotsBooted=false;
+    var dotRunners=[];
+    var dotStartedAt=0;
+    var motionOk=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dotMotion={
+      'in-0':{dur:2.6,begin:0},
+      'in-1':{dur:2.8,begin:0.4},
+      'in-2':{dur:2.7,begin:0.8},
+      'out-0':{dur:2.4,begin:0},
+      'out-1':{dur:2.6,begin:0.5}
+    };
+    function bootDots(){
+      if(dotsBooted)return;
+      dotsBooted=true;
+      svg.querySelectorAll('[data-df-dot]').forEach(function(dot){
+        var key=dot.getAttribute('data-df-dot');
+        var cfg=dotMotion[key];
+        if(!cfg)return;
+        dotRunners.push({el:dot,key:key,dur:cfg.dur,begin:cfg.begin});
+      });
+      if(!motionOk)return;
+      dotStartedAt=performance.now();
+      requestAnimationFrame(animateDots);
+    }
+    function animateDots(now){
+      if(svg.classList.contains('is-ready')&&motionOk){
+        var t=(now-dotStartedAt)/1000;
+        dotRunners.forEach(function(run){
+          var path=svg.querySelector('[data-df-line="'+run.key+'"]');
+          if(!path)return;
+          var len=path.getTotalLength();
+          if(!len)return;
+          var elapsed=t-run.begin;
+          if(elapsed<0){
+            run.el.setAttribute('cx','-9999');
+            run.el.setAttribute('cy','-9999');
+            return;
+          }
+          var pt=path.getPointAtLength((elapsed%run.dur)/run.dur*len);
+          run.el.setAttribute('cx',String(pt.x));
+          run.el.setAttribute('cy',String(pt.y));
+        });
+      }
+      requestAnimationFrame(animateDots);
+    }
+    function showFlow(){
+      bootDots();
+      svg.classList.add('is-ready');
+    }
+    function curve(x1,y1,x2,y2){
+      var mx=x1+(x2-x1)*0.55;
+      return 'M'+x1+','+y1+' C'+mx+','+y1+' '+(x2-28)+','+y2+' '+x2+','+y2;
+    }
+    function curveSide(x1,y1,x2,y2,gutterX){
+      return 'M'+x1+','+y1+' C'+gutterX+','+y1+' '+gutterX+','+y2+' '+x2+','+y2;
+    }
+    function setPath(key,d){
+      var p=svg.querySelector('[data-df-line="'+key+'"]');
+      if(p)p.setAttribute('d',d);
+    }
+    function layout(){
+      var w=flow.offsetWidth,h=flow.offsetHeight;
+      if(w<1||h<1)return;
+      svg.setAttribute('viewBox','0 0 '+w+' '+h);
+      var fr=flow.getBoundingClientRect();
+      var hr=hub.getBoundingClientRect();
+      var mobile=window.matchMedia('(max-width:820px)').matches;
+      if(mobile){
+        var hty=hr.top-fr.top;
+        var hby=hr.top-fr.top+hr.height;
+        var hl=hr.left-fr.left;
+        var inGutter=Math.max.apply(null,nodes.map(function(node){
+          return node.getBoundingClientRect().right-fr.left;
+        }))+22;
+        nodes.forEach(function(node,i){
+          var nr=node.getBoundingClientRect();
+          var x1=nr.right-fr.left;
+          var y1=nr.top-fr.top+nr.height/2;
+          var x2=hl+hr.width*(0.22+i*0.28);
+          setPath('in-'+i,curveSide(x1,y1,x2,hty,inGutter));
+        });
+        var outGutter=Math.min.apply(null,outs.map(function(out){
+          return out.getBoundingClientRect().left-fr.left;
+        }))-22;
+        outs.forEach(function(out,i){
+          var or=out.getBoundingClientRect();
+          var x1=hl+hr.width*(0.28+i*0.24);
+          var x2=or.left-fr.left;
+          var y2=or.top-fr.top+or.height/2;
+          setPath('out-'+i,curveSide(x1,hby,x2,y2,outGutter));
+        });
+      }else{
+        var hx=hr.left-fr.left;
+        var hrx=hx+hr.width;
+        nodes.forEach(function(node,i){
+          var nr=node.getBoundingClientRect();
+          var x1=nr.right-fr.left;
+          var y1=nr.top-fr.top+nr.height/2;
+          setPath('in-'+i,curve(x1,y1,hx,y1));
+        });
+        outs.forEach(function(out,i){
+          var or=out.getBoundingClientRect();
+          var x2=or.left-fr.left;
+          var y2=or.top-fr.top+or.height/2;
+          setPath('out-'+i,curve(hrx,y2,x2,y2));
+        });
+      }
+      if(!svg.classList.contains('is-ready'))showFlow();
+    }
+    var idx=0;
+    function tick(){
+      nodes.forEach(function(n,i){n.classList.toggle('is-active',i===idx);});
+      idx=(idx+1)%nodes.length;
+    }
+    tick();
+    layout();
+    window.addEventListener('resize',layout);
+    window.addEventListener('load',layout);
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      setInterval(tick,3200);
+    }
+    if(typeof ResizeObserver!=='undefined'){
+      new ResizeObserver(layout).observe(flow);
+    }
   })();
   /* Reveal on scroll */
   (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();

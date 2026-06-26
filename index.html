@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
 <style>
   :root{
     --nav-h:69px; --navy:#0b1530; --navy-2:#091128; --card:rgba(255,255,255,.045); --cyan:#4fd6e6; --violet:#b18fd6; --blue:#7db4e0; --green:#64e6a2;
@@ -34,6 +34,8 @@
   .navlinks{display:none;gap:18px;font-size:13px;color:var(--muted);align-items:center;white-space:nowrap}
   .navlinks a:hover{color:var(--ink)}
   .navlinks a.nav-spot{font-weight:700;color:var(--ink);letter-spacing:.02em}
+  .navlinks a.nav-spot-cloud{color:var(--green)}
+  .navlinks a.nav-spot-cloud:hover{color:#8af0ba}
   .navlinks a.nav-spot-ia{color:var(--cyan)}
   .navlinks a.nav-spot-ia:hover{color:#7ee8f4}
   .navlinks a.nav-spot-contact{padding:7px 14px;border:1px solid rgba(79,214,230,.35);border-radius:999px;color:var(--cyan);font-weight:700}
@@ -44,6 +46,8 @@
   .btn .btn-arrow{width:28px;height:16px;flex:none;margin-left:2px}
   .btn-ghost{border-color:var(--line);color:var(--ink)}
   .btn-ghost:hover{border-color:rgba(255,255,255,.4)}
+  .btn-more{border-color:rgba(79,214,230,.32);color:var(--cyan);background:rgba(79,214,230,.055);box-shadow:none}
+  .btn-more:hover{border-color:rgba(79,214,230,.58);background:rgba(79,214,230,.095);transform:translateY(-2px)}
   @media(min-width:1040px){.navlinks{display:flex}}
   /* HERO */
   .hero{position:relative;padding:88px 0 68px;overflow:hidden}
@@ -243,6 +247,25 @@
   .why .it .ic{flex:none;width:40px;height:40px;border-radius:10px;background:var(--cyan);display:grid;place-items:center;color:#06122b;font-weight:800;font-family:'Geist'}
   .why .it h4{font-family:'Geist';font-size:16px;margin-bottom:5px}
   .why .it p{font-size:13.5px;color:var(--muted);line-height:1.5}
+  /* FOCUS SUMMARIES */
+  .focus-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:34px;align-items:start}
+  .focus-copy p{color:var(--muted);font-size:16px;line-height:1.65;margin-top:16px}
+  .focus-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .focus-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .focus-card{border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.025));transition:.22s;min-height:164px}
+  .focus-card:hover{border-color:rgba(79,214,230,.34);transform:translateY(-3px)}
+  .focus-card .k{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--cyan);margin-bottom:9px}
+  .focus-card:nth-child(2) .k{color:var(--green)}
+  .focus-card:nth-child(3) .k{color:var(--violet)}
+  .focus-card h3{font-family:'Geist';font-size:18px;font-weight:800;line-height:1.2}
+  .focus-card p{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:9px}
+  .focus-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+  .focus-logo{height:74px;border:1px solid rgba(255,255,255,.18);border-radius:14px;background:#f7fbff;display:flex;align-items:center;justify-content:center;padding:14px}
+  .focus-logo img{max-width:100%;max-height:44px;object-fit:contain}
+  .focus-logo.logo-thales img{max-height:30px}
+  .focus-logo.logo-cert img{max-height:50px}
+  @media(max-width:900px){.focus-grid{grid-template-columns:1fr}.focus-cards{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.focus-cards,.focus-logos{grid-template-columns:1fr}.focus-card{min-height:auto}}
   /* CLIENTS */
   .clients{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
   .client{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--card);display:flex;flex-direction:column;gap:16px;min-height:245px}
@@ -379,6 +402,7 @@
     <div class="navlinks">
       <a href="#enjeux">Enjeux</a>
       <a href="#approche">Approche</a>
+      <a href="#cloud-souverain" class="nav-spot nav-spot-cloud">Cloud souverain</a>
       <a href="#ia" class="nav-spot nav-spot-ia">IA</a>
       <a href="#references">Références</a>
       <a href="#tech">Tech</a>
@@ -571,11 +595,11 @@
       <p>Du diagnostic à la documentation, tout le cycle de vie de la donnée est couvert — ouvrez celles qui vous intéressent.</p>
     </div>
     <div class="svcs">
-      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">01</span><span class="svc-trigger-text"><h3>Audit & Conseil stratégique</h3><span class="sub">Le diagnostic avant l'ingénierie.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Cartographie des systèmes et des métiers, analyse des processus, formalisation du schéma directeur data. Nous posons les fondations stratégiques avant la moindre brique technique.</p></div></div></div>
-      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">02</span><span class="svc-trigger-text"><h3>Infrastructure souveraine</h3><span class="sub">Le socle technique sécurisé.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Conception et déploiement automatisés d'infrastructures cloud souveraines : S3NS (Thales & Google Cloud). Sauvegarde, PRA et résilience intégrés dès la conception. Aucune zone d'ombre.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">01</span><span class="svc-trigger-text"><h3>Audit &amp; Conseil stratégique</h3><span class="sub">Le diagnostic avant l'ingénierie.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Cartographie des systèmes et des métiers, analyse des processus, formalisation du schéma directeur data. Nous posons les fondations stratégiques avant la moindre brique technique.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">02</span><span class="svc-trigger-text"><h3>Infrastructure souveraine</h3><span class="sub">Le socle technique sécurisé.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Conception et déploiement automatisés d'infrastructures cloud souveraines : S3NS (Thales &amp; Google Cloud). Sauvegarde, PRA et résilience intégrés dès la conception. Aucune zone d'ombre.</p></div></div></div>
       <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">03</span><span class="svc-trigger-text"><h3>Chaîne data complète</h3><span class="sub">De la source à la décision.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Connexions aux sources, datalake, ODS, flux de transformation, DWH, datamarts. Conception industrielle, sécurisée et performante, de l'ingestion à la restitution.</p></div></div></div>
       <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">04</span><span class="svc-trigger-text"><h3>Master Data Management</h3><span class="sub">La donnée fiable, par construction.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Référentiels unifiés, qualité mesurée en continu, modification des données dans le socle et alimentation de vos systèmes depuis le DWH. Aucune décision sérieuse sur une donnée incertaine.</p></div></div></div>
-      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">05</span><span class="svc-trigger-text"><h3>Gouvernance & Comitologie</h3><span class="sub">Le cadre qui structure la donnée.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Politiques de données, instances de pilotage, gestion des utilisateurs et des accès. Un cadre clair qui garantit traçabilité, conformité RGPD et maîtrise opérationnelle dans la durée.</p></div></div></div>
+      <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">05</span><span class="svc-trigger-text"><h3>Gouvernance &amp; Comitologie</h3><span class="sub">Le cadre qui structure la donnée.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Politiques de données, instances de pilotage, gestion des utilisateurs et des accès. Un cadre clair qui garantit traçabilité, conformité RGPD et maîtrise opérationnelle dans la durée.</p></div></div></div>
       <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">06</span><span class="svc-trigger-text"><h3>Dashboards</h3><span class="sub">L'intelligence restituée.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Pilotage stratégique, indicateurs de qualité. Des visualisations pensées pour décider. Chaque indicateur sert une intention métier actionnable.</p></div></div></div>
       <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">07</span><span class="svc-trigger-text"><h3>Obstraken Data Hub</h3><span class="sub">Le hub de données externes.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Donnée gouvernementale, INSEE, météo, données sectorielles… Nous croisons vos données internes avec nos données externes pour décupler la puissance d'analyse et la force de l'IA.</p></div></div></div>
       <div class="svc reveal"><button type="button" class="svc-trigger" aria-expanded="false"><span class="svc-trigger-main"><span class="n">08</span><span class="svc-trigger-text"><h3>Intelligence Artificielle</h3><span class="sub">L'IA au service de l'industrialisation.</span></span></span><span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="svc-panel"><div class="svc-panel-inner"><p>Intégration de briques d'IA dans la chaîne data : modèles prédictifs, analyses avancées, automatisation des traitements. Une IA ancrée dans vos données et alignée sur vos enjeux métier.</p></div></div></div>
@@ -584,99 +608,81 @@
   </div>
 </section>
 
+<!-- CLOUD SOUVERAIN -->
+<section class="pad" id="cloud-souverain" style="background:var(--navy-2)">
+  <div class="wrap">
+    <div class="focus-grid">
+      <div class="focus-copy reveal">
+        <div class="eyebrow">Cloud souverain</div>
+        <h2 style="margin-top:14px">Le bon niveau de confiance, sans ralentir vos projets data.</h2>
+        <p>Nous concevons des socles cloud adaptés à la sensibilité de vos données : GCP France pour accélérer avec les services managés, S3NS / PREMI3NS pour les exigences SecNumCloud, et une architecture pensée pour la sécurité, la traçabilité et l'exploitation dans la durée.</p>
+        <div class="focus-actions">
+          <a class="btn btn-more" href="cloud-souverain.html">En voir + sur le Cloud Souverain</a>
+        </div>
+        <div class="focus-logos reveal" aria-label="Partenaires et cadres cloud souverain">
+          <div class="focus-logo"><img src="assets/partners/s3ns.png" alt="S3NS" /></div>
+          <div class="focus-logo"><img src="assets/partners/googlecloud.png" alt="Google Cloud" /></div>
+          <div class="focus-logo logo-thales"><img src="assets/partners/thales.png" alt="Thales" /></div>
+        </div>
+      </div>
+      <div class="focus-cards reveal">
+        <div class="focus-card">
+          <span class="k">01 · Localisation</span>
+          <h3>Données hébergées en France</h3>
+          <p>Choix des régions, séparation des environnements et contrôle des flux entrants et sortants.</p>
+        </div>
+        <div class="focus-card">
+          <span class="k">02 · Confiance</span>
+          <h3>S3NS / PREMI3NS</h3>
+          <p>Cloud de confiance basé sur la technologie Google Cloud, opéré dans un cadre français contrôlé par Thales.</p>
+        </div>
+        <div class="focus-card">
+          <span class="k">03 · Sécurité</span>
+          <h3>Chiffrement, accès, audit</h3>
+          <p>IAM, clés, journalisation, sauvegardes, PRA et règles d'administration documentées dès la conception.</p>
+        </div>
+        <div class="focus-card">
+          <span class="k">04 · Run</span>
+          <h3>Exploitation maîtrisée</h3>
+          <p>Supervision, coûts, incidents et évolutions suivis dans un modèle clair pour vos équipes métier et IT.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- IA -->
 <section class="pad" id="ia">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="eyebrow">Intelligence Artificielle</div>
-      <h2 style="margin-top:14px">Des réponses <span class="grad-t">justes</span>, des données <span style="color:var(--green)">fiables</span>, un périmètre <span style="color:var(--violet)">sécurisé</span>.</h2>
-      <p>Nous fiabilisons et structurons vos données d'abord — l'IA produit ensuite des décisions éclairées, pas des hallucinations. Hébergé en France, sous vos contrats, sans transfert hors de votre périmètre.</p>
-    </div>
-
-    <div class="ia-sov reveal">
-      <div class="ia-sov-card">
-        <span class="sov-badge">Mode GCP France</span>
-        <h4>IA sous contrats Google, instances France</h4>
-        <p>Infrastructure Google Cloud en France. Accès aux meilleurs modèles : Gemini, Claude et OpenAI via Vertex AI.</p>
-        <div class="sov-tags">
-          <span class="sov-tag">Gemini</span>
-          <span class="sov-tag">Claude</span>
-          <span class="sov-tag">OpenAI</span>
-          <span class="sov-tag">Vertex AI</span>
+    <div class="focus-grid">
+      <div class="focus-copy reveal">
+        <div class="eyebrow">Intelligence Artificielle</div>
+        <h2 style="margin-top:14px">Une IA utile parce que la donnée est fiable.</h2>
+        <p>Obstraken intègre l'IA au bout de la chaîne data : modèles prédictifs, agents d'automatisation, copilotes métier et alertes en langage naturel. Vos données sont structurées, vos accès contrôlés, et les usages IA restent dans le périmètre contractuel choisi.</p>
+        <div class="focus-actions">
+          <a class="btn btn-more" href="ia.html">En voir + sur l'IA</a>
         </div>
       </div>
-      <div class="ia-sov-card">
-        <span class="sov-badge">Mode PREMI3NS</span>
-        <h4>IA 100% souveraine — SecNumCloud 3.2</h4>
-        <p>Pour les secteurs régulés, IA intégrale sur le Cloud de Confiance S3NS (Thalès). Zéro accès étranger aux données ni aux modèles.</p>
-        <div class="sov-tags">
-          <span class="sov-tag">S3NS / Thalès</span>
-          <span class="sov-tag">SecNumCloud 3.2</span>
-          <span class="sov-tag">Données sensibles</span>
+      <div class="focus-cards reveal">
+        <div class="focus-card">
+          <span class="k">Anticiper</span>
+          <h3>Prédire</h3>
+          <p>Churn, charge, stock, scoring commercial : des modèles construits sur vos datamarts fiabilisés.</p>
         </div>
-      </div>
-    </div>
-
-    <div class="ia-pillars reveal">
-      <div class="ia-pillar">
-        <span class="pillar-label">Anticiper</span>
-        <h3>Prédire</h3>
-        <p>Modèles prédictifs sur vos datamarts : churn, charge, scoring commercial.</p>
-      </div>
-      <div class="ia-pillar">
-        <span class="pillar-label">Automatiser</span>
-        <h3>Surveiller</h3>
-        <p>Agents IA qui génèrent rapports, dashboards et alertes métier en autonomie.</p>
-      </div>
-      <div class="ia-pillar">
-        <span class="pillar-label">Augmenter</span>
-        <h3>Interroger</h3>
-        <p>Copilote conversationnel : questions en français, réponses chiffrées, sans SQL.</p>
-      </div>
-    </div>
-
-    <div class="ia-lock reveal">
-      <strong>🔒 Rien ne sort.</strong>
-      <span>Aucune donnée ne quitte votre périmètre — pas d'entraînement sur vos données, pas d'accès tiers, pas de transfert hors UE.</span>
-    </div>
-
-    <div class="ia-demo-grid reveal">
-      <div class="ia-demo-left">
-        <div class="eyebrow">Le résultat concret</div>
-        <h3>Vos utilisateurs créent leurs alertes métier — en français</h3>
-        <div class="ia-demo-steps">
-          <div class="ia-demo-step">
-            <div class="ia-demo-num">1</div>
-            <p><strong>L'utilisateur décrit son besoin</strong> en une phrase, comme il le dirait à un collègue</p>
-          </div>
-          <div class="ia-demo-step">
-            <div class="ia-demo-num">2</div>
-            <p><strong>L'agent vérifie et confirme</strong> la requête sur les datamarts autorisés</p>
-          </div>
-          <div class="ia-demo-step">
-            <div class="ia-demo-num">3</div>
-            <p><strong>L'alerte est active</strong> — notification par email, Slack ou Teams dès que la condition est remplie</p>
-          </div>
+        <div class="focus-card">
+          <span class="k">Automatiser</span>
+          <h3>Surveiller</h3>
+          <p>Agents IA capables de générer rapports, alertes et dashboards à partir de règles métier validées.</p>
         </div>
-      </div>
-      <div class="ia-chat-panel df-out df-out-chat reveal">
-        <div class="df-win-head">
-          <span class="df-win-dots"><i></i><i></i><i></i></span>
-          <span class="df-win-title"><img class="df-win-logo" src="favicon.svg" alt="" />Copilote Obstraken</span>
-          <span class="df-win-live" style="color:#dcc8f2"><i style="background:#b18fd6"></i>Connecté à vos datamarts</span>
+        <div class="focus-card">
+          <span class="k">Augmenter</span>
+          <h3>Interroger</h3>
+          <p>Copilote conversationnel pour poser des questions en français et obtenir des réponses chiffrées.</p>
         </div>
-        <div class="df-out-body">
-          <div class="df-chat-scene">
-            <div class="df-bubble df-bubble-user">
-              Préviens-moi si un client dépasse 60 jours de retard de paiement sur plus de 10&nbsp;000&nbsp;€
-            </div>
-            <div class="df-bubble df-bubble-ai">
-              <strong>Compris.</strong> Je vais surveiller la table <em>finance.creances_clients</em> pour les créances &gt; 10&nbsp;000&nbsp;€ avec un délai &gt; 60 jours.<br><br>
-              Notification par : <strong>email + Teams</strong><br>
-              Fréquence de vérification : <strong>quotidienne à 8h</strong>
-              <span class="tag-ok">✓ Alerte créée</span>
-            </div>
-          </div>
+        <div class="focus-card">
+          <span class="k">Sécuriser</span>
+          <h3>Encadrer</h3>
+          <p>Pas d'entraînement sur vos données, pas de transfert non maîtrisé, pas d'accès hors droits métier.</p>
         </div>
       </div>
     </div>
@@ -730,13 +736,13 @@
   <div class="wrap">
     <div class="head reveal"><div class="eyebrow">Équipe</div><h2 style="margin-top:14px">7 experts data : +100 ans d'expérience cumulés.</h2><p>Un collectif senior et pluridisciplinaire. Vous travaillerez nécessairement avec chacun d'entre eux.</p></div>
     <div class="team">
-      <div class="member reveal"><div class="ph"><img src="assets/mikael.png" alt="Mikael Cleuziou" /></div><div class="info"><h4>Mikael Cleuziou</h4><div class="role">Fondateur · Cadrage & Stratégie</div><div class="exp">21 ans d'expérience</div></div></div>
+      <div class="member reveal"><div class="ph"><img src="assets/mikael.png" alt="Mikael Cleuziou" /></div><div class="info"><h4>Mikael Cleuziou</h4><div class="role">Fondateur · Cadrage &amp; Stratégie</div><div class="exp">21 ans d'expérience</div></div></div>
       <div class="member reveal"><div class="ph"><img src="assets/nico.png" alt="Nicolas Pouzet" /></div><div class="info"><h4>Nicolas Pouzet</h4><div class="role">Directeur de Projets</div><div class="exp">20 ans d'expérience</div></div></div>
-      <div class="member reveal"><div class="ph"><img src="assets/yohan.png" alt="Yohan Gornadha" /></div><div class="info"><h4>Yohan Gornadha</h4><div class="role">Expert métier & Designer</div><div class="exp">14 ans d'expérience</div></div></div>
+      <div class="member reveal"><div class="ph"><img src="assets/yohan.png" alt="Yohan Gornadha" /></div><div class="info"><h4>Yohan Gornadha</h4><div class="role">Expert métier &amp; Designer</div><div class="exp">14 ans d'expérience</div></div></div>
       <div class="member reveal"><div class="ph"><img src="assets/david.png" alt="David Bochert" /></div><div class="info"><h4>David Bochert</h4><div class="role">Architecte</div><div class="exp">34 ans d'expérience</div></div></div>
-      <div class="member reveal"><div class="ph"><img src="assets/gaspard.png" alt="Gaspard Cothias Faure" /></div><div class="info"><h4>Gaspard Cothias Faure</h4><div class="role">Ingénieur Industrialisation & IA</div><div class="exp">5 ans d'expérience</div></div></div>
-      <div class="member reveal"><div class="ph"><img src="assets/thibault.png" alt="Thibault Lapp" /></div><div class="info"><h4>Thibault Lapp</h4><div class="role">Ingénieur Modélisation & IA</div><div class="exp">4 ans d'expérience</div></div></div>
-      <div class="member reveal"><div class="ph"><img src="assets/arno.png" alt="Arno Clognier" /></div><div class="info"><h4>Arno Clognier</h4><div class="role">Ingénieur Modélisation & IA</div><div class="exp">4 ans d'expérience</div></div></div>
+      <div class="member reveal"><div class="ph"><img src="assets/gaspard.png" alt="Gaspard Cothias Faure" /></div><div class="info"><h4>Gaspard Cothias Faure</h4><div class="role">Ingénieur Industrialisation &amp; IA</div><div class="exp">5 ans d'expérience</div></div></div>
+      <div class="member reveal"><div class="ph"><img src="assets/thibault.png" alt="Thibault Lapp" /></div><div class="info"><h4>Thibault Lapp</h4><div class="role">Ingénieur Modélisation &amp; IA</div><div class="exp">4 ans d'expérience</div></div></div>
+      <div class="member reveal"><div class="ph"><img src="assets/arno.png" alt="Arno Clognier" /></div><div class="info"><h4>Arno Clognier</h4><div class="role">Ingénieur Modélisation &amp; IA</div><div class="exp">4 ans d'expérience</div></div></div>
     </div>
   </div>
 </section>

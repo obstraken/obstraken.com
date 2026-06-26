@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intelligence Artificielle — Obstraken</title>
+<meta name="description" content="IA souveraine Obstraken : modèles prédictifs, agents, copilotes métier et alertes en langage naturel sur un socle data fiable et sécurisé." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --nav-h:69px; --navy:#0b1530; --navy-2:#091128; --card:rgba(255,255,255,.045); --cyan:#4fd6e6; --violet:#b18fd6; --blue:#7db4e0; --green:#64e6a2;
+    --ink:#eaf0ff; --muted:#9eb0d8; --line:rgba(255,255,255,.12); --section-line:rgba(255,255,255,.26);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{font-family:'Geist',-apple-system,sans-serif;background:var(--navy);color:var(--ink);-webkit-font-smoothing:antialiased;padding-top:var(--nav-h)}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+  .grad-t{color:var(--cyan)}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan);font-weight:600;line-height:1.6;overflow-wrap:anywhere}
+  section{position:relative;border-top:1px solid var(--section-line)}
+  h1,h2,h3,h4{font-family:'Geist'}
+  h1{font-weight:800;font-size:64px;line-height:1.03;letter-spacing:0;max-width:920px;overflow-wrap:break-word}
+  h2{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:0}
+  nav.top{position:fixed;top:0;left:0;right:0;width:100%;z-index:500;backdrop-filter:blur(14px);background:rgba(11,21,48,.9);border-bottom:1px solid var(--section-line);box-shadow:0 14px 34px rgba(0,0,0,.18)}
+  nav.top .row{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:38px;height:38px;border-radius:9px}
+  .brand b{font-weight:800;letter-spacing:.04em;font-size:17px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:14px;transition:.2s;border:1px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--cyan);color:#06122b;box-shadow:0 10px 24px rgba(79,214,230,.18)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,214,230,.24)}
+  .btn .btn-arrow{width:28px;height:16px;flex:none;margin-left:2px}
+  .btn-more{border-color:rgba(79,214,230,.32);color:var(--cyan);background:rgba(79,214,230,.055);box-shadow:none}
+  .btn-more:hover{border-color:rgba(79,214,230,.58);background:rgba(79,214,230,.095);transform:translateY(-2px)}
+  .page-hero{position:relative;padding:88px 0 68px;overflow:hidden}
+  .page-hero p{margin-top:24px;font-size:19px;line-height:1.6;color:var(--muted);max-width:720px;overflow-wrap:anywhere}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .pad{padding:80px 0}
+  .head{max-width:760px;margin-bottom:46px}
+  .head p{margin-top:16px;color:var(--muted);font-size:17px;line-height:1.6}
+  .ia-sov{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:18px;overflow:hidden}
+  .ia-sov-card{position:relative;padding:30px 28px;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.025));display:flex;flex-direction:column;gap:14px}
+  .ia-sov-card::before{content:"";position:absolute;inset:0 0 auto;height:3px}
+  .ia-sov-card:first-child::before{background:linear-gradient(90deg,var(--cyan),var(--blue))}
+  .ia-sov-card:last-child::before{background:linear-gradient(90deg,var(--violet),#e07db4)}
+  .sov-badge{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+  .ia-sov-card:first-child .sov-badge{background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);color:var(--cyan)}
+  .ia-sov-card:last-child .sov-badge{background:rgba(177,143,214,.14);border:1px solid rgba(177,143,214,.28);color:#d4b8f0}
+  .ia-sov-card h3{font-size:19px;font-weight:800;line-height:1.25}
+  .ia-sov-card p{font-size:14px;color:var(--muted);line-height:1.6}
+  .sov-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .sov-tag{font-size:11.5px;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--muted);font-weight:500}
+  .ia-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ia-pillar{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:32px 28px 28px;background:linear-gradient(155deg,rgba(255,255,255,.065),rgba(255,255,255,.025));transition:.28s;display:flex;flex-direction:column}
+  .ia-pillar:hover{border-color:rgba(79,214,230,.42);transform:translateY(-5px);box-shadow:0 24px 56px rgba(0,0,0,.28)}
+  .pillar-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:20px;border:1px solid transparent}
+  .ia-pillar:nth-child(1) .pillar-icon{background:rgba(79,214,230,.12);border-color:rgba(79,214,230,.24)}
+  .ia-pillar:nth-child(2) .pillar-icon{background:rgba(100,230,162,.12);border-color:rgba(100,230,162,.24)}
+  .ia-pillar:nth-child(3) .pillar-icon{background:rgba(177,143,214,.12);border-color:rgba(177,143,214,.24)}
+  .pillar-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:var(--cyan)}
+  .ia-pillar:nth-child(2) .pillar-label{color:var(--green)}
+  .ia-pillar:nth-child(3) .pillar-label{color:var(--violet)}
+  .ia-pillar h3{font-size:24px;font-weight:800;line-height:1.15;margin-bottom:14px}
+  .pillar-desc{font-size:14.5px;color:var(--muted);line-height:1.6;margin-bottom:22px;flex:1}
+  .pillar-usecases{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+  .usecase{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .usecase::before{content:"→";color:var(--cyan);font-weight:700;flex:none;margin-top:1px}
+  .ia-sec-box{position:relative;border:2px solid rgba(79,214,230,.3);border-radius:22px;padding:36px 32px;background:linear-gradient(160deg,rgba(79,214,230,.06),rgba(11,21,48,.95));overflow:hidden}
+  .ia-sec-box::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+  .ia-sec-layers{display:flex;flex-direction:column;gap:0;max-width:720px;margin:0 auto}
+  .ia-sec-layer{display:flex;align-items:center;gap:16px;padding:14px 20px;position:relative}
+  .ia-sec-layer:not(:last-child)::after{content:"";position:absolute;left:32px;bottom:-1px;right:32px;height:1px;background:rgba(255,255,255,.08)}
+  .ia-sec-dot{width:10px;height:10px;border-radius:50%;flex:none}
+  .ia-sec-layer:nth-child(1) .ia-sec-dot{background:var(--cyan)}
+  .ia-sec-layer:nth-child(2) .ia-sec-dot{background:var(--green)}
+  .ia-sec-layer:nth-child(3) .ia-sec-dot{background:var(--violet)}
+  .ia-sec-layer:nth-child(4) .ia-sec-dot{background:var(--blue)}
+  .ia-sec-label{font-size:14px;color:var(--ink);font-weight:600;min-width:210px}
+  .ia-sec-detail{font-size:13px;color:var(--muted);line-height:1.5}
+  .ia-sec-footer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
+  .lock-msg{display:inline-flex;flex-direction:column;align-items:center;gap:6px;font-size:15px;font-weight:700;color:var(--cyan);letter-spacing:.04em}
+  .lock-sub{font-size:13px;color:var(--muted);font-weight:400;letter-spacing:0}
+  .ia-demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  .ia-demo-left h3{font-size:26px;font-weight:800;line-height:1.15;margin-top:10px}
+  .ia-demo-left p{font-size:15px;color:var(--muted);line-height:1.6;margin-top:12px}
+  .ia-demo-steps{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+  .ia-demo-step{display:flex;align-items:flex-start;gap:14px}
+  .ia-demo-num{width:32px;height:32px;border-radius:10px;background:rgba(79,214,230,.12);border:1px solid rgba(79,214,230,.24);display:grid;place-items:center;font-size:14px;font-weight:800;color:var(--cyan);flex:none}
+  .ia-demo-step p{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
+  .ia-demo-step p strong{color:var(--ink)}
+  .ia-chat{border:1px solid rgba(79,214,230,.22);border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.02));overflow:hidden}
+  .ia-chat-header{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--muted)}
+  .ia-chat-header .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .ia-chat-body{padding:20px;display:flex;flex-direction:column;gap:14px}
+  .ia-chat-msg{max-width:88%;padding:12px 16px;border-radius:14px;font-size:13.5px;line-height:1.55}
+  .ia-chat-user{align-self:flex-end;background:rgba(79,214,230,.14);border:1px solid rgba(79,214,230,.2);color:var(--ink)}
+  .ia-chat-ai{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--muted)}
+  .ia-chat-ai strong{color:var(--ink);font-weight:600}
+  .tag-ok{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:4px 10px;border-radius:6px;background:rgba(100,230,162,.12);border:1px solid rgba(100,230,162,.22);color:var(--green);font-size:11.5px;font-weight:700;letter-spacing:.05em}
+  .cta-band{text-align:center;padding:20px 0 0}
+  .cta-band p{color:var(--muted);font-size:15px;margin-bottom:20px}
+  footer.f{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
+  .frow2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:13px}
+  .frow2 .brand b{color:var(--ink)}
+  .frow2 .brand span{line-height:1.5}
+  .legal{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .legal a:hover{color:var(--ink)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:900px){.ia-pillars{grid-template-columns:1fr}.ia-demo-grid{grid-template-columns:1fr}}
+  @media(max-width:760px){.ia-sov{grid-template-columns:1fr}.ia-sec-layer{align-items:flex-start;flex-direction:column;gap:8px}.ia-sec-label{min-width:0}.ia-sec-layer:not(:last-child)::after{left:20px;right:20px}}
+  @media(max-width:620px){
+    :root{--nav-h:65px}
+    .wrap{padding:0 18px}
+    nav.top .row{min-height:64px}
+    .brand img{width:34px;height:34px}
+    .brand b{font-size:15px}
+    h1{font-size:33px}
+    h2{font-size:30px}
+    .page-hero{padding:54px 0 48px}
+    .page-hero p{font-size:16px}
+    .pad{padding:58px 0}
+    .ia-sov-card,.ia-pillar,.ia-sec-box{padding:24px 20px}
+    .frow2{flex-direction:column;align-items:flex-start;gap:22px}
+    .frow2 .brand{align-items:flex-start}
+    .legal{flex-direction:column;align-items:flex-start;gap:10px}
+  }
+</style>
+</head>
+<body>
+<nav class="top">
+  <div class="wrap row">
+    <a class="brand" href="index.html#top"><img src="favicon.svg" alt="" /><b>OBSTRAKEN</b></a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Intelligence Artificielle</div>
+    <h1 style="margin-top:22px">Des réponses <span class="grad-t">justes</span>, des données fiables, un périmètre sécurisé.</h1>
+    <p>Nous fiabilisons et structurons vos données d'abord. L'IA peut ensuite produire des décisions éclairées, pas des approximations. Chaque usage est déployé dans le périmètre cloud et contractuel que vous choisissez.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="index.html#contact">Discuter de votre projet IA<svg class="btn-arrow" viewBox="0 0 28 16" fill="none" aria-hidden="true"><path d="M0 8h22M16 2l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<section class="pad" style="background:var(--navy-2)">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Souveraineté</div>
+      <h2 style="margin-top:14px">Deux modes d'hébergement selon la sensibilité de vos usages.</h2>
+      <p>Le même principe dans les deux cas : vos données restent sous contrôle, vos accès sont bornés, et les modèles ne deviennent utiles qu'après une couche data propre, documentée et gouvernée.</p>
+    </div>
+    <div class="ia-sov reveal">
+      <div class="ia-sov-card">
+        <span class="sov-badge">Mode GCP France</span>
+        <h3>IA sous contrats Google, instances France</h3>
+        <p>Pour accélérer avec les services managés Google Cloud en France : BigQuery, Vertex AI, Gemini et des modèles partenaires. L'objectif est de livrer vite, avec chiffrement, contrôle d'accès et traçabilité des traitements.</p>
+        <div class="sov-tags">
+          <span class="sov-tag">Gemini</span>
+          <span class="sov-tag">Vertex AI</span>
+          <span class="sov-tag">BigQuery ML</span>
+          <span class="sov-tag">Région France</span>
+          <span class="sov-tag">Contrats Google Cloud</span>
+        </div>
+      </div>
+      <div class="ia-sov-card">
+        <span class="sov-badge">Mode PREMI3NS</span>
+        <h3>IA 100% souveraine sur Cloud de Confiance</h3>
+        <p>Pour les secteurs régulés ou les données sensibles, les workloads IA peuvent être cadrés sur PREMI3NS, le Cloud de Confiance par S3NS, basé sur la technologie Google Cloud et qualifié SecNumCloud 3.2 par l'ANSSI.</p>
+        <div class="sov-tags">
+          <span class="sov-tag">S3NS / Thales</span>
+          <span class="sov-tag">SecNumCloud 3.2</span>
+          <span class="sov-tag">Données sensibles</span>
+          <span class="sov-tag">Accès maîtrisés</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Paliers IA</div>
+      <h2 style="margin-top:14px">Anticiper, automatiser, augmenter.</h2>
+      <p>Nous ne posons pas une couche IA sur une donnée fragile. Nous construisons d'abord le socle data, puis nous choisissons les usages qui créent vraiment de la valeur métier.</p>
+    </div>
+    <div class="ia-pillars reveal">
+      <div class="ia-pillar">
+        <div class="pillar-icon">01</div>
+        <span class="pillar-label">Palier 1</span>
+        <h3>Anticiper</h3>
+        <p class="pillar-desc">Des modèles prédictifs entraînés sur vos datamarts pour transformer l'historique en prévisions actionnables.</p>
+        <div class="pillar-usecases">
+          <div class="usecase">Prédire le churn client plusieurs semaines avant qu'il arrive</div>
+          <div class="usecase">Anticiper pics de charge, ruptures de stock ou dérives opérationnelles</div>
+          <div class="usecase">Scorer la probabilité de signature d'une affaire commerciale</div>
+        </div>
+      </div>
+      <div class="ia-pillar">
+        <div class="pillar-icon">02</div>
+        <span class="pillar-label">Palier 2</span>
+        <h3>Automatiser</h3>
+        <p class="pillar-desc">Des agents IA qui surveillent vos KPIs, génèrent vos rapports et déclenchent des alertes sur des règles contrôlées.</p>
+        <div class="pillar-usecases">
+          <div class="usecase">Génération automatique de tableaux de bord à la demande</div>
+          <div class="usecase">Alertes business personnalisées en langage naturel</div>
+          <div class="usecase">Détection d'anomalies et notification aux équipes concernées</div>
+        </div>
+      </div>
+      <div class="ia-pillar">
+        <div class="pillar-icon">03</div>
+        <span class="pillar-label">Palier 3</span>
+        <h3>Augmenter</h3>
+        <p class="pillar-desc">Un copilote conversationnel déployé dans votre environnement, qui interroge vos données et ne voit que ce que vous autorisez.</p>
+        <div class="pillar-usecases">
+          <div class="usecase">Questions métier en français, réponses chiffrées et sourcées</div>
+          <div class="usecase">Exploration de données sans écrire de SQL</div>
+          <div class="usecase">Synthèses contextuelles pour accélérer la prise de décision</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="background:var(--navy-2)">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Sécurité</div>
+      <h2 style="margin-top:14px">Une IA encadrée par l'architecture, pas par la confiance aveugle.</h2>
+    </div>
+    <div class="ia-sec-box reveal">
+      <div class="ia-sec-layers">
+        <div class="ia-sec-layer">
+          <div class="ia-sec-dot"></div>
+          <div class="ia-sec-label">Vos données</div>
+          <div class="ia-sec-detail">Datamarts structurés, historisés, contrôlés et documentés avant tout usage IA.</div>
+        </div>
+        <div class="ia-sec-layer">
+          <div class="ia-sec-dot"></div>
+          <div class="ia-sec-label">IA Obstraken</div>
+          <div class="ia-sec-detail">Modèles, agents et copilotes conçus autour de vos droits métier et de vos règles de gouvernance.</div>
+        </div>
+        <div class="ia-sec-layer">
+          <div class="ia-sec-dot"></div>
+          <div class="ia-sec-label">Infrastructure cloud</div>
+          <div class="ia-sec-detail">GCP France ou PREMI3NS selon le niveau de souveraineté et de conformité attendu.</div>
+        </div>
+        <div class="ia-sec-layer">
+          <div class="ia-sec-dot"></div>
+          <div class="ia-sec-label">Contrats et contrôles</div>
+          <div class="ia-sec-detail">Chiffrement, journalisation, accès, séparation des rôles et politiques d'usage formalisées.</div>
+        </div>
+      </div>
+      <div class="ia-sec-footer">
+        <span class="lock-msg">
+          Rien ne sort du périmètre retenu.
+          <span class="lock-sub">Pas d'entraînement sur vos données, pas d'accès tiers non prévu, pas de transfert non maîtrisé.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="ia-demo-grid reveal">
+      <div class="ia-demo-left">
+        <div class="eyebrow">Résultat concret</div>
+        <h3>Vos utilisateurs créent leurs propres alertes métier en français.</h3>
+        <p>Plus besoin de ticket IT pour chaque règle simple. L'utilisateur décrit son besoin, l'agent vérifie les données autorisées, puis active l'alerte sur les datamarts validés.</p>
+        <div class="ia-demo-steps">
+          <div class="ia-demo-step">
+            <div class="ia-demo-num">1</div>
+            <p><strong>L'utilisateur décrit son besoin</strong> en une phrase, comme il le dirait à un collègue.</p>
+          </div>
+          <div class="ia-demo-step">
+            <div class="ia-demo-num">2</div>
+            <p><strong>L'agent vérifie et confirme</strong> la requête sur les tables et indicateurs autorisés.</p>
+          </div>
+          <div class="ia-demo-step">
+            <div class="ia-demo-num">3</div>
+            <p><strong>L'alerte est active</strong> avec notification par email, Slack ou Teams dès que la condition est remplie.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ia-chat">
+        <div class="ia-chat-header">
+          <span class="dot"></span>
+          Copilote Obstraken — connecté à vos datamarts
+        </div>
+        <div class="ia-chat-body">
+          <div class="ia-chat-msg ia-chat-user">
+            Préviens-moi si un client dépasse 60 jours de retard de paiement sur plus de 10&nbsp;000&nbsp;€
+          </div>
+          <div class="ia-chat-msg ia-chat-ai">
+            <strong>Compris.</strong> Je surveille les créances clients supérieures à 10&nbsp;000&nbsp;€ avec un délai supérieur à 60 jours.<br><br>
+            Notification : <strong>email + Teams</strong><br>
+            Vérification : <strong>quotidienne à 8h</strong>
+            <span class="tag-ok">Alerte créée</span>
+          </div>
+          <div class="ia-chat-msg ia-chat-user">
+            Ajoute aussi une alerte si le pipeline commercial baisse de plus de 15% sur une semaine
+          </div>
+          <div class="ia-chat-msg ia-chat-ai">
+            <strong>C'est fait.</strong> Je compare le pipeline total chaque lundi à S-1.<br><br>
+            Seuil : baisse &gt; 15%<br>
+            Destinataire : direction commerciale
+            <span class="tag-ok">Alerte créée</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-band reveal">
+      <p>Chaque palier peut être déployé en mode GCP France ou PREMI3NS souverain, selon vos contraintes.</p>
+      <a class="btn btn-primary" href="index.html#contact">Parler d'un cas d'usage IA<svg class="btn-arrow" viewBox="0 0 28 16" fill="none" aria-hidden="true"><path d="M0 8h22M16 2l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="wrap frow2">
+    <div class="brand" style="gap:10px"><img src="favicon.svg" alt="" style="width:30px;height:30px;border-radius:8px"/><span>© 2026 <b>OBSTRAKEN</b> — L'Usine de Données Souveraine as-a-Service</span></div>
+    <div class="legal"><a href="politique-confidentialite.html">Politique de confidentialité</a><a href="mentions-legales.html">Mentions légales</a></div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nav=document.querySelector('nav.top');
+    if(!nav)return;
+    function navHeight(){
+      var h=nav.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--nav-h',h+'px');
+    }
+    navHeight();
+    window.addEventListener('resize',navHeight);
+  })();
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){el.classList.add('in');});
+      return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  })();
+</script>
+</body>
+</html>

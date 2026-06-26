@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
 <style>
   :root{--navy:#0b1530;--ink:#eaf0ff;--muted:#9eb0d8;--line:rgba(255,255,255,.12)}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,9 +26,14 @@
   h2{font-family:'Geist';font-size:22px;margin-top:30px}
   h2:first-child{margin-top:0}
   p{margin-top:12px;color:var(--muted);line-height:1.7}
-  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
-  .legal{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
-  @media(max-width:620px){.wrap{padding:0 18px}.row{padding:16px 0}main.wrap{padding:58px 18px 82px}h1{font-size:34px}.content{margin-top:36px}}
+  .footer-wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+  footer.f{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
+  .frow2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:13px}
+  .frow2 .brand b{color:var(--ink)}
+  .frow2 .brand span{line-height:1.5}
+  .legal{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .legal a:hover{color:var(--ink)}
+  @media(max-width:620px){.wrap{padding:0 18px}.footer-wrap{padding:0 18px}.row{padding:16px 0}main.wrap{padding:58px 18px 82px}h1{font-size:34px}.content{margin-top:36px}.frow2{flex-direction:column;align-items:flex-start;gap:22px}.frow2 .brand{align-items:flex-start}.legal{flex-direction:column;align-items:flex-start;gap:10px}}
 </style>
 </head>
 <body>
@@ -76,9 +81,9 @@
     <p>Dernière mise à jour : Mai 2026</p>
   </div>
 </main>
-<footer>
-  <div class="wrap">
-    <div>© 2026 <strong>OBSTRAKEN</strong> — L'Usine de Données Souveraine as-a-Service</div>
+<footer class="f">
+  <div class="footer-wrap frow2">
+    <div class="brand" style="gap:10px"><img src="favicon.svg" alt="" style="width:30px;height:30px;border-radius:8px"/><span>© 2026 <b>OBSTRAKEN</b> — L'Usine de Données Souveraine as-a-Service</span></div>
     <div class="legal"><a href="politique-confidentialite.html">Politique de confidentialité</a><a href="mentions-legales.html">Mentions légales</a></div>
   </div>
 </footer>

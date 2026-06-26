@@ -6,8 +6,7 @@ HTML / CSS / JS pur, sans build, prêt à déployer.
 ## Démarrer en local
 
 ```bash
-python -m http.server 8080
-# puis ouvrez http://localhost:8080
+python -m http.server 8080 # puis ouvrez http://localhost:8080
 ```
 
 ## Formulaire de contact

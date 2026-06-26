@@ -1,0 +1,8 @@
+Porte la totalité de mon site vitrine sur Nextjs derniere version (16.2.9) app router et tailwind css. Utilise les dernières versions pour toutes les briques. utilise typescript et pnpm.
+Pour le formulaire, utilise Nextjs pour effectuer l'envoi du formulaire, passe par l'API gmail avec authentification par compte de service pour envoyer le formulaire via email où team@obstraken.com est l'envoyeur et mcleuziou@obstraken.com et c.cabrera@obstraken.com sont les destinataires.
+Il faut au maximum avoir un bon SEO, donc optimise tout à ce niveau là
+Je te laisse faire les choix techniques en fonction de mon projet et de mes besoins.
+Garde bien en tête qu'il faut garder le responsive du site, comme actuellement ca marche très bien
+Pour le formulaire, on ajoutera pas de sécurité supplémentaire anti bot ou anti spam, juste un honeypot si tu veux.
+Une fois ca effectué, tu feras un commit + push tu créera un nouveau thread pour review des changements effectués et correction si necessaire (puis commit et push).
+Tu me donnera à la fin, les étapes détaillés manuelles que je dois faire pour setup l'envoi d'email et les étapes détaillées manuelles que je dois faire pour améliorer encore le SEO.
